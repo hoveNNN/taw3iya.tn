@@ -21,5 +21,6 @@ public class Post {
     private List<Like> likes=new ArrayList<Like>();
     @OneToMany(mappedBy = "post")
     private List<Comment> comments=new ArrayList<Comment>();
+    //comeent
 
 }
