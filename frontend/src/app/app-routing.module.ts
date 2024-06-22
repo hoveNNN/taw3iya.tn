@@ -4,12 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { SujetComponent } from './sujet/sujet.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'contact',component:ContactComponent},
   {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  {path: 'sujet',component:SujetComponent},
+  {path:'**', component:NotfoundComponent}
   
 ];
 

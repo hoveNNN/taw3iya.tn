@@ -12,20 +12,18 @@
         </li>
         <li >
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Topics</button>
-            <div class="dropdown-content">
-              <a >Link 1</a>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >Topics</button>
+            <div class="dropdown-content" style="z-index: 50;">
+              <a routerLink="/sujet">Technologie</a>
               <a >Link 2</a>
               <a >Link 3</a>
             </div>
           </div>
         </li>
       </ul>
-
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" routerLink="/login">Login</button>
-      </form>
+        <button class="btn btn-outline-success mx-3" type="submit" routerLink="/login">Login</button>
+        <button class="btn btn-outline-success " type="submit" routerLink="/signup">Sign up</button>
+      
     </div>
   </div>
 </nav>
