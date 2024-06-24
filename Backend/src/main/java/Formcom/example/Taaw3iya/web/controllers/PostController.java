@@ -5,6 +5,8 @@ import Formcom.example.Taaw3iya.business.services.IPostService;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
 import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.entities.Post;
+import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,7 @@ public class PostController {
 
     }
     @RequestMapping({"/ajouterPost"})
-    public ResponseEntity<Object> ajouterprod() {
+    public ResponseEntity<Object> ajouterprod() throws DuplicatePostExecption {
          List<Like> likes1=new ArrayList<Like>();
             List<Comment> comments1=new ArrayList<Comment>();
          Post P1=new Post(idCount++,"type1",likes1,comments1);
