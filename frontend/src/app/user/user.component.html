@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="card border-primary">
+  <div class="card-header bg-primary text-white">User List</div>
+  <div class="card-body">
+    <div *ngIf="users.length>0;else noUser">
+    <h4> User List</h4>
+    <table  class="table table-hover">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+        </thead>
+        <tbody >
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.fName}}</td>
+                <td>{{user.lName}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.email}}</td>
+                
+                <td> <a  class=" btn btn-danger" (click)="onDelete(user.id) "  > Delete</a>
+                    <a  class=" btn btn-success mx-3"  routerLink="/user/{{user.id}}" > Show Profil</a></td>
+                
+            </tr>
+        </tbody>
+    </table>
+   
+  </div>
+  <ng-template #noUser>
+    <p class="alert alert-warning">
+        No users found !
+    </p>
+</ng-template>
+</div>
+</div>
