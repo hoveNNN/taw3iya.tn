@@ -1,7 +1,7 @@
 import {User} from './user';
 export const  USERS:User[]=[
     {
-        id:123,
+        id:1,
         fName:"user1",
         lName:"user1",
         email:"issam.msahli@gmail.com",
@@ -10,7 +10,7 @@ export const  USERS:User[]=[
 
     },
     {
-        id:456,
+        id:2,
         fName:"user2",
         lName:"msahli",
         gender:"male",

@@ -14,7 +14,7 @@ export class NavbarComponent {
   openLogIn(){
    this.login.open(LoginComponent)
   }
-  isVisible: boolean = false; // Flag to control modal visibility
+  isVisible: boolean = false; 
 
   openModal() {
     this.isVisible = true;

@@ -9,13 +9,15 @@ import { User } from '../shared/user';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  users:User[]=[]
+  users: User[] = [];
+
   constructor(private router: Router, private userService: UserService) {}
+
   ngOnInit(): void {
-    this.users=this.userService.getUsers();
-  }
-  onDelete(id:number){
-    this.userService.deleteUserById(id);
+    this.users = this.userService.getUsers();
   }
 
+  onDelete(id: number) {
+    this.userService.deleteUserById(id);
+  }
 }

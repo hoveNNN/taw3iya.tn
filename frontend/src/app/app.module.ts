@@ -15,6 +15,9 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { EditProfilComponent } from './edit-profil/edit-profil.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignupComponent,
     NotfoundComponent,
     UserProfilComponent,
+    ForgotPasswordComponent,
+    EditProfilComponent,
+    ChangePasswordComponent,
     
     
   ],
@@ -35,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
    
     
   ],
