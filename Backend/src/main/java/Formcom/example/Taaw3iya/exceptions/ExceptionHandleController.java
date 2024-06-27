@@ -4,7 +4,8 @@ import java.time.Instant;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.authorization.AuthorizationDeniedException;
+
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,4 +61,31 @@ public class ExceptionHandleController {
        return new ResponseEntity<>(errorResponse,HttpStatus.INTERNAL_SERVER_ERROR); 
 
     }
+
+     @ExceptionHandler(AuthorizationDeniedException.class)
+    @ResponseBody
+    public ResponseEntity<ErrorResponse> handleAuthorizationDeniedException(AuthorizationDeniedException e, WebRequest request) {
+        final ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(Instant.now())
+                .error("Forbidden")
+                .status(HttpStatus.FORBIDDEN.value())
+                .message(e.getMessage())
+                .path(request.getDescription(false))
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
+    }
+    @ExceptionHandler(DuplicateUserException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ResponseEntity<ErrorResponse> HandleDuplicateUserException(DuplicateUserException e, WebRequest request) {
+        final ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(Instant.now())
+                .error("Duplicate User")
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(e.getMessage())
+                .path(request.getDescription(false))
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
 }
