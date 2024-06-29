@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ForgotPasswordComponent,
     EditProfilComponent,
     ChangePasswordComponent,
+    
     
     
   ],
