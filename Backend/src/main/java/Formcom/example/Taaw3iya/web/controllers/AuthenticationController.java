@@ -4,11 +4,14 @@ package Formcom.example.Taaw3iya.web.controllers;
 
 
 import Formcom.example.Taaw3iya.dao.entities.User;
+import Formcom.example.Taaw3iya.exceptions.DuplicateUserException;
 import Formcom.example.Taaw3iya.web.dto.LoginUserDto;
 import Formcom.example.Taaw3iya.web.dto.RegisterUserDto;
 import Formcom.example.Taaw3iya.web.response.LoginResponse;
 import Formcom.example.Taaw3iya.business.services.AuthenticationService;
 import Formcom.example.Taaw3iya.business.services.JwtService;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,10 +31,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) throws DuplicateUserException {
         User registeredUser = authenticationService.signup(registerUserDto);
-
-        return ResponseEntity.ok(registeredUser);
+        registeredUser.getRole().getAuthorities();
+      System.out.println("maybe yes "); 
+       System.out.println(registeredUser.getRole().getAuthorities()); 
+       return new ResponseEntity<>(registeredUser,HttpStatus.OK);
     }
 
     @PostMapping("/login")

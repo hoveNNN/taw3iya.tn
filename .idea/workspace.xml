@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="" />
+    <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/Taaw3iyaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/Taaw3iyaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Roles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/enums/Privilege.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/enums/Privilege.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/enums/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/enums/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/RegisterUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/RegisterUserDto.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +28,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
 }]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2i98Xqv1Mbq71GJBMk70toWlUx8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,13 +42,48 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Taaw3iyaApplication.executor": "Run",
+    "git-widget-placeholder": "khaledb",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/mac/Documents/GitHub/taw3iya.tn",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Taaw3iyaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Taaw3iya" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Formcom.example.Taaw3iya.Taaw3iyaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -38,7 +92,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718891475040</updated>
+      <workItem from="1719783337207" duration="208000" />
+      <workItem from="1719784334351" duration="2674000" />
+      <workItem from="1719787817819" duration="573000" />
+      <workItem from="1719788507826" duration="837000" />
+      <workItem from="1719789653340" duration="187000" />
+      <workItem from="1719794181861" duration="1928000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

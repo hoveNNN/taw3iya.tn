@@ -10,7 +10,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
  
 import static Formcom.example.Taaw3iya.dao.enums.Privilege.*;
- 
+import static Formcom.example.Taaw3iya.dao.enums.Role.ADMIN;
+import static Formcom.example.Taaw3iya.dao.enums.Privilege.READ_PRIVILEGE;
+import static Formcom.example.Taaw3iya.dao.enums.Privilege.WRITE_PRIVILEGE;
+import static Formcom.example.Taaw3iya.dao.enums.Privilege.DELETE_PRIVILEGE;
+import static Formcom.example.Taaw3iya.dao.enums.Privilege.UPDATE_PRIVILEGE;
+
+
+@Getter
 @RequiredArgsConstructor
 public enum Role {
   ADMIN(
@@ -20,7 +27,6 @@ public enum Role {
       Set.of(READ_PRIVILEGE)
  );
  
-  @Getter
   private final Set<Privilege> privileges;
  
   public List<SimpleGrantedAuthority> getAuthorities(){

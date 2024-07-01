@@ -8,15 +8,20 @@ import Formcom.example.Taaw3iya.dao.entities.Post;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.convert.ReadingConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+// @PreAuthorize("hasAnyRole('ADMIN','USER')")
+@RequestMapping("/api/post")
 @RestController
 public class PostController {
     @Autowired
@@ -27,28 +32,61 @@ public class PostController {
     @Autowired
     private ILikeService likeService;
 
+    @Autowired
+   private  UserDetailsService userDetailsService;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping({"/getAllPosts"})
     public ResponseEntity<Object> getProducts(){
 
         return new ResponseEntity<>(postService.getAllPost(), HttpStatus.OK);
 
     }
-    @RequestMapping({"/ajouterPost"})
-    public ResponseEntity<Object> ajouterprod() throws DuplicatePostExecption {
-         List<Like> likes1=new ArrayList<Like>();
-            List<Comment> comments1=new ArrayList<Comment>();
-         Post P1=new Post(idCount++,"type1",likes1,comments1);
-            // Add the product if the category exists
-//            postService.addPost(new Post(
-//                    idCount++,
-//                    post.getType(),likes1
-//                      // Pass the existing category
-//            ));
-        postService.addPost(P1);
-            return new ResponseEntity<>("Post add successfully", HttpStatus.OK);
+   
+   
+//     @RequestMapping({"/ajouterPost"})
+//     public ResponseEntity<Object> ajouterprod() throws DuplicatePostExecption {
+        
+       
+//          List<Like> likes1=new ArrayList<Like>();
+//         List<Comment> comments1=new ArrayList<Comment>();
+//          Post P1=new Post(idCount++,"type1",likes1,comments1);
+//             // Add the product if the category exists
+// //            postService.addPost(new Post(
+// //                    idCount++,
+// //                    post.getType(),likes1
+// //                      // Pass the existing category
+// //            ));
+//         postService.addPost(P1);
+//             return new ResponseEntity<>("Post add successfully", HttpStatus.OK);
 
-        }
+//         }
+        @PreAuthorize("hasAnyRole('ROLE_USER')")
+        @GetMapping({"/testRole"})
+        public ResponseEntity<Object> ajouterprod2()   {
+            
+           
+            
+                return new ResponseEntity<>("USer Is here add successfully",HttpStatus.OK);
+    
+            }
+
+            @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+            @RequestMapping({"/testAdmin"})
+            public ResponseEntity<Object> ajouterprod22()   {
+                
+               
+                
+                    return new ResponseEntity<>("ADMIN Is here add successfully",HttpStatus.OK);
+        
+                }
+                
+                @RequestMapping({"/testForall"})
+                public ResponseEntity<Object> ajouterprod33()   {
+
+                        return new ResponseEntity<>("ADMIN and User Is here add successfully",HttpStatus.OK);
+            
+                    }
     @GetMapping(value="/getPostById/{id}")
     public ResponseEntity<Object> getPostbyId(@PathVariable("id")Long id) {
         Optional<Post> post=postService.getPost(id);

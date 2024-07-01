@@ -5,6 +5,10 @@ import  Formcom.example.Taaw3iya.web.dto.LoginUserDto;
 import Formcom.example.Taaw3iya.web.dto.RegisterUserDto;
 import Formcom.example.Taaw3iya.dao.entities.User;
 import Formcom.example.Taaw3iya.dao.repository.UserRepository;
+import Formcom.example.Taaw3iya.exceptions.DuplicateUserException;
+
+import javax.management.relation.Role;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +22,8 @@ public class AuthenticationService {
     
     private final AuthenticationManager authenticationManager;
 
+    
+  
     public AuthenticationService(
         UserRepository userRepository,
         AuthenticationManager authenticationManager,
@@ -28,12 +34,14 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(RegisterUserDto input) {
+    public User signup(RegisterUserDto input) throws DuplicateUserException{
         User user = new User();
                 user.setFullName(input.getFullName());
                 user.setEmail(input.getEmail());
                 user.setPassword(passwordEncoder.encode(input.getPassword()));
-
+                 System.out.println(input.getRole());
+                user.setRole(input.getRole());
+        
         return userRepository.save(user);
     }
 

@@ -12,6 +12,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import Formcom.example.Taaw3iya.dao.enums.Role;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +37,9 @@ public class User implements UserDetails{
 
     @Column(nullable = false)
     private String password;
+    
+    @Column(nullable = true)
+    private Role role;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -43,12 +48,16 @@ public class User implements UserDetails{
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
-    
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return role.getAuthorities();
     }
+
+    // @Override
+    // public Collection<? extends GrantedAuthority> getAuthorities() {
+        
+    //     return role.getAuthorities();
+    // }
 
     public String getPassword() {
         return password;
