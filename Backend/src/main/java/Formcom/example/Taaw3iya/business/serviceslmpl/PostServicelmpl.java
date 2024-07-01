@@ -1,5 +1,6 @@
 package Formcom.example.Taaw3iya.business.serviceslmpl;
 
+import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
 import Formcom.example.Taaw3iya.dao.entities.Post;
 import Formcom.example.Taaw3iya.dao.repository.PostRepository;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class PostServicelmpl implements IPostService {
+   
 @Autowired
     PostRepository postRepository;
 @Override
@@ -51,6 +53,8 @@ public class PostServicelmpl implements IPostService {
     }
 @Override
     public List<Post> getAllPost(){
+
+
     return  postRepository.findAll();
 }
 }

@@ -7,8 +7,6 @@ import Formcom.example.Taaw3iya.dao.entities.User;
 import Formcom.example.Taaw3iya.dao.repository.UserRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicateUserException;
 
-import javax.management.relation.Role;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,5 +53,14 @@ public class AuthenticationService {
 
         return userRepository.findByEmail(input.getEmail())
                 .orElseThrow();
+    }
+    public Integer getidOfUserAuth(String email){
+
+
+        return userRepository.findByEmail(email).get().getIDD();
+    }
+    public User getUserauth(String mail){
+
+        return userRepository.findByEmail(mail).get();
     }
 }

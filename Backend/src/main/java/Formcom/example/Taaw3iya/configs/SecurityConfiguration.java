@@ -51,6 +51,11 @@ public class SecurityConfiguration {
     private static final String[] WHITE_LIST_URL = {"testForall",
             "auth/login",
             "auth/signup",
+            "api/post/getId",
+            "api/post/getAllPosts",
+            "api/like/getAllLikes",
+            "api/like/createlike/{idpost}"
+
 
 
             };
@@ -93,8 +98,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
-                                .requestMatchers("/api/test/testAdmin").hasRole(ADMIN.name())
-                                .requestMatchers( "/api/test/testRole").hasRole(USER.name())
+                                .requestMatchers("/api/post/testAdmin").hasRole(ADMIN.name())
+                                .requestMatchers( "/api/post/testRole").hasRole(USER.name())
+                                .requestMatchers( "/api/post/ajouterPost").hasRole(ADMIN.name())
 
                                 .anyRequest()
                                 .authenticated()
