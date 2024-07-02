@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PostComponent } from './post/post.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ForgotPasswordComponent,
     EditProfilComponent,
     ChangePasswordComponent,
+    PostComponent,
+    FaqComponent,
     
     
     
