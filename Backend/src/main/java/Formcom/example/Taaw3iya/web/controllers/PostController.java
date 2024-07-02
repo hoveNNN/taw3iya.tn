@@ -4,13 +4,17 @@ import Formcom.example.Taaw3iya.business.services.AuthenticationService;
 import Formcom.example.Taaw3iya.business.services.ICommentService;
 import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
-import Formcom.example.Taaw3iya.dao.entities.Comment;
-import Formcom.example.Taaw3iya.dao.entities.Like;
-import Formcom.example.Taaw3iya.dao.entities.Post;
-import Formcom.example.Taaw3iya.dao.entities.User;
+import Formcom.example.Taaw3iya.business.services.ITagService;
+import Formcom.example.Taaw3iya.dao.entities.*;
 import Formcom.example.Taaw3iya.dao.repository.UserRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 
+import Formcom.example.Taaw3iya.web.dto.AddPostDto;
+import Formcom.example.Taaw3iya.web.dto.TagDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.ReadingConverter;
 import org.springframework.http.HttpStatus;
@@ -23,6 +27,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,7 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     private IPostService postService;
+    private ITagService tagService;
 
 
     private static Long idCount=0L;
@@ -65,53 +71,14 @@ public class PostController {
     }
 
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PostMapping("/posts/create")
+    public ResponseEntity<?> createNewPost(@RequestBody @Valid AddPostDto dto) throws JsonProcessingException, DuplicatePostExecption {
+        Post newPost = postService.addPost(dto);
+        return new ResponseEntity<>(newPost, HttpStatus.CREATED);
+    }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
-     @RequestMapping({"/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod() throws DuplicatePostExecption {
 
-       
-        List<Like> likes1=new ArrayList<Like>();
-
-         List<Comment> comments1=new ArrayList<Comment>();
-
-          Post P1=new Post(idCount++,"type3",likes1,comments1,authservice.getUserauth(this.getuseremail()));
-             // Add the product if the category exists
- //            postService.addPost(new Post(
- //                    idCount++,
- //                    post.getType(),likes1
- //                      // Pass the existing category
- //            ));
-         postService.addPost(P1);
-             return new ResponseEntity<>("Post add successfully", HttpStatus.OK);
-
-         }
-        @PreAuthorize("hasAnyRole('ROLE_USER')")
-        @GetMapping({"/testRole"})
-        public ResponseEntity<Object> ajouterprod2()   {
-            
-           
-            
-                return new ResponseEntity<>("USer Is here add successfully",HttpStatus.OK);
-    
-            }
-
-            @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-            @RequestMapping({"/testAdmin"})
-            public ResponseEntity<Object> ajouterprod22()   {
-                
-               
-                
-                    return new ResponseEntity<>("ADMIN Is here add successfully",HttpStatus.OK);
-        
-                }
-                
-                @RequestMapping({"/testForall"})
-                public ResponseEntity<Object> ajouterprod33()   {
-
-                        return new ResponseEntity<>("ADMIN and User Is here add successfully",HttpStatus.OK);
-            
-                    }
     @GetMapping(value="/getPostById/{id}")
     public ResponseEntity<Object> getPostbyId(@PathVariable("id")Long id) {
         Optional<Post> post=postService.getPost(id);
@@ -155,6 +122,18 @@ public class PostController {
         }
         return currentUserName;
     }
-    }
+
+
+//    @GetMapping("/tags/{tagName}")
+//    public ResponseEntity<?> getPostsByTag(@PathVariable("tagName") String tagName,
+//                                           @RequestParam("page") Integer page,
+//                                           @RequestParam("size") Integer size) {
+//        page = page < 0 ? 0 : page-1;
+//        size = size <= 0 ? 5 : size;
+//        Tag targetTag = tagService.getTagByName(tagName);
+//        List<PostResponse> taggedPosts = postService.getPostByTagPaginate(targetTag, page, size);
+//        return new ResponseEntity<>(taggedPosts, HttpStatus.OK);
+//    }
+}
 
 
