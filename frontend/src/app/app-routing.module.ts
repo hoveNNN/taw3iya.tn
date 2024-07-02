@@ -12,6 +12,7 @@ import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { authGuard } from './guards/auth.guard';
 import { PostComponent } from './post/post.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {path:'',/*canActivate:[authGuard],*/ component:HomeComponent},
@@ -22,8 +23,9 @@ const routes: Routes = [
   {path:'user/:id',component:UserProfilComponent},
   {path:'resetPassword',component:ForgotPasswordComponent},
   {path:'user/:id/edit',component:EditProfilComponent},
-  {path:'change-password',component:ChangePasswordComponent},
+  {path:'settings',component:ChangePasswordComponent},
   {path:'post', component:PostComponent},
+  {path:'faq',component:FaqComponent},
   {path:'**', component:NotfoundComponent}
   
 ];

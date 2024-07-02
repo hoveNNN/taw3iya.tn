@@ -16,41 +16,28 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link d-flex flex-column text-center  "
+            class="nav-link d-flex flex-column text-center"
             aria-current="page"
-            
           >
-            <i class="fas fa-file-alt fa-lg "></i>
-            
-            <span class="small dropdown-toggle">Topics</span>
+            <i class="fas fa-file-alt fa-lg"></i>
 
+            <span class="small dropdown-toggle">Topics</span>
           </a>
-          <div class="dropdown-content " style="z-index: 50">
+          <div class="dropdown-content" style="z-index: 50">
             <a routerLink="/sujet">Technologie</a>
             <a>Link 2</a>
             <a>Link 3</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" >
-            <i class="fas fa-question-circle fa-lg"></i> <span class="small">Help</span>
+          <a class="nav-link d-flex flex-column text-center" routerLink="/faq">
+            <i class="fas fa-question-circle fa-lg"></i>
+            <span class="small" routerLink="/faq">Help</span>
           </a>
         </li>
-
-        </ul>
+      </ul>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a
-              class="nav-link active d-flex flex-column text-center"
-              aria-current="page"
-              routerLink=""
-              ><i class="fas fa-home fa-lg"></i><span class="small">Home</span></a
-            >
-          </li>
-  
-  
           <li class="nav-item">
             <a
               class="nav-link d-flex flex-column text-center"
@@ -72,7 +59,6 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle d-flex align-items-center"
-              
               id="navbarDropdownMenuLink"
               role="button"
               data-mdb-toggle="dropdown"
@@ -87,14 +73,19 @@
               />
             </a>
             <ul class="dropdown-content" style="z-index: 50">
-              <li><a class="dropdown-item" routerLink="/user/{{user?.id}}" >My profile</a></li>
-              <li><a class="dropdown-item" >Settings</a></li>
-              <li><a class="dropdown-item" >Logout</a></li>
+              <li>
+                <a class="dropdown-item" routerLink="/user/{{ user?.id }}"
+                  >My profile</a
+                >
+              </li>
+              <li><a class="dropdown-item" routerLink="/user">DashBoard</a></li>
+              <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
+              <li><a class="dropdown-item">Logout</a></li>
             </ul>
           </li>
         </ul>
       </div>
-      <div >
+      <div>
         <button
           class="btn btn-outline-success mx-3"
           type="submit"
@@ -112,6 +103,4 @@
       </div>
     </div>
   </div>
-</nav> 
-
-
+</nav>
