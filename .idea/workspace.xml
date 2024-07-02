@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ITagService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/TagServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Tag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Topic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/TagRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/exceptions/TagExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/exceptions/TagNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/AddPostDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/TagDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="charbti bellahi testi il createNewPost fil PostController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Organization.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Roles.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +49,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.taw3iya_tn-endpoints | #1.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Taaw3iyaApplication.executor": "Run",
+    "Spring Boot.Taaw3iyaApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/mac/Documents/GitHub/taw3iya.tn",
@@ -90,7 +74,10 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.Taaw3iyaApplication">
+    <configuration name="taw3iya_tn-endpoints | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/taw3iya_tn-endpoints.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="Taaw3iyaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Taaw3iya" />
@@ -99,6 +86,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.taw3iya_tn-endpoints | #1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -126,11 +118,34 @@
       <workItem from="1719824870238" duration="737000" />
       <workItem from="1719825968193" duration="2792000" />
       <workItem from="1719833841747" duration="4218000" />
-      <workItem from="1719915823255" duration="6009000" />
+      <workItem from="1719915823255" duration="7166000" />
     </task>
+    <task id="LOCAL-00001" summary="charbti bellahi testi il createNewPost fil PostController">
+      <option name="closed" value="true" />
+      <created>1719923545354</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719923545354</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="charbti bellahi testi il createNewPost fil PostController" />
+    <option name="LAST_COMMIT_MESSAGE" value="charbti bellahi testi il createNewPost fil PostController" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="org.hibernate.AnnotationException" package="org.hibernate" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

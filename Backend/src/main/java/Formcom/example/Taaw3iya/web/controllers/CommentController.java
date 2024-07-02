@@ -1,19 +1,15 @@
 package Formcom.example.Taaw3iya.web.controllers;
 
 import Formcom.example.Taaw3iya.business.services.ICommentService;
-import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
-import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.entities.Post;
-import Formcom.example.Taaw3iya.web.models.requests.CommentForm;
+import Formcom.example.Taaw3iya.web.dto.CommentForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

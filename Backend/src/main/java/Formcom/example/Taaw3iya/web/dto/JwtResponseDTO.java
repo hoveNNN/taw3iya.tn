@@ -1,4 +1,4 @@
-package Formcom.example.Taaw3iya.web.models.requests;
+package Formcom.example.Taaw3iya.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthRequestDTO {
-
-    private String username;
-    private String password;
+public class JwtResponseDTO {
+    private String accessToken;
+  
 }
-
-
-
