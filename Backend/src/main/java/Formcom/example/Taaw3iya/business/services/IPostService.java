@@ -1,6 +1,7 @@
 package Formcom.example.Taaw3iya.business.services;
 
 import Formcom.example.Taaw3iya.dao.entities.Post;
+import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,9 +9,9 @@ import java.util.Optional;
 public interface IPostService {
     public Optional<Post> getPost(Long id);
 
-    public Post addPost(Post p);
+    public Post addPost(Post p)throws DuplicatePostExecption;
 
-    public Post updatePost(Post p);
+    public Post updatePost(Post p,Long id)throws DuplicatePostExecption;
 
     public void deletePost(Long id);
 
