@@ -7,8 +7,11 @@ import Formcom.example.Taaw3iya.dao.entities.User;
 import Formcom.example.Taaw3iya.dao.repository.UserRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicateUserException;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -55,12 +58,15 @@ public class AuthenticationService {
                 .orElseThrow();
     }
     public Integer getidOfUserAuth(String email){
-
-
-        return userRepository.findByEmail(email).get().getIDD();
+        return Math.toIntExact(userRepository.findByEmail(email).get().getIDD());
     }
     public User getUserauth(String mail){
 
         return userRepository.findByEmail(mail).get();
     }
+
+// here will get the id of the connected user
+
+
+
 }

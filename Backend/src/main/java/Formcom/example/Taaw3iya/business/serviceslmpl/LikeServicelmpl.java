@@ -2,6 +2,7 @@ package Formcom.example.Taaw3iya.business.serviceslmpl;
 
 import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.dao.entities.Like;
+import Formcom.example.Taaw3iya.dao.entities.Post;
 import Formcom.example.Taaw3iya.dao.repository.LikeRepository;
 import Formcom.example.Taaw3iya.dao.repository.PostRepository;
 import jakarta.transaction.Transactional;
@@ -35,6 +36,21 @@ public class LikeServicelmpl implements ILikeService {
     @Override
     public List<Like> getAllLikes(){
         return  likerepository.findAll();
+    }
+
+    @Override
+    public Boolean userAlreadylikethepost(Long iduser, Long idpost){
+      Optional <Like> like=likerepository.findByposte(idpost);
+
+       like=like.filter(like1 -> like1.getUser().getIDD()==iduser);
+
+       if(like.isPresent()){
+           return  true;
+       }else {
+           return false;
+       }
+
+
     }
 }
 

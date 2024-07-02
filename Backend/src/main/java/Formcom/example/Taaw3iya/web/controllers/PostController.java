@@ -11,6 +11,8 @@ import Formcom.example.Taaw3iya.dao.entities.User;
 import Formcom.example.Taaw3iya.dao.repository.UserRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 
+import Formcom.example.Taaw3iya.web.models.requests.PostDTO;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.ReadingConverter;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 // @PreAuthorize("hasAnyRole('ADMIN','USER')")
@@ -58,6 +61,22 @@ public class PostController {
 
     }
 
+    @GetMapping({"/getPostByIdd/{id}"})
+    public ResponseEntity<Object> getpostByid33(@PathVariable("id")Long id){
+       Optional <Post> p=postService.getPost(id);
+      List<Like> likes= likeService.getAllLikes();
+      List<Like> likes1= (List<Like>) likes.stream().filter(like -> like.getPoste()==id);
+        if (p.isPresent()){
+            p.get().setLikes(likes1);
+            p.get().getLikes();
+            Hibernate.initialize(p);
+            return new ResponseEntity<>(p, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @GetMapping({"/getId"})
     public ResponseEntity<Object> getUserID(){
 
@@ -68,14 +87,14 @@ public class PostController {
 
     @PreAuthorize("hasAnyRole('ADMIN')")
      @RequestMapping({"/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod() throws DuplicatePostExecption {
+     public ResponseEntity<Object> ajouterprod(@RequestBody PostDTO postfrom) throws DuplicatePostExecption {
 
        
         List<Like> likes1=new ArrayList<Like>();
-
+//        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
 
-          Post P1=new Post(idCount++,"type3",likes1,comments1,authservice.getUserauth(this.getuseremail()));
+          Post P1=new Post(idCount++,postfrom.getValue(),likes1,comments1,authservice.getUserauth(this.getuseremail()));
              // Add the product if the category exists
  //            postService.addPost(new Post(
  //                    idCount++,
@@ -83,7 +102,7 @@ public class PostController {
  //                      // Pass the existing category
  //            ));
          postService.addPost(P1);
-             return new ResponseEntity<>("Post add successfully", HttpStatus.OK);
+             return new ResponseEntity<>(P1, HttpStatus.OK);
 
          }
         @PreAuthorize("hasAnyRole('ROLE_USER')")

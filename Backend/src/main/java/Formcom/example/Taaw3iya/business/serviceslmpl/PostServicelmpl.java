@@ -2,10 +2,12 @@ package Formcom.example.Taaw3iya.business.serviceslmpl;
 
 import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
+import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.entities.Post;
 import Formcom.example.Taaw3iya.dao.repository.PostRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 import jakarta.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,9 @@ public class PostServicelmpl implements IPostService {
     }
 @Override
     public Post addPost(Post p)throws DuplicatePostExecption{
-        if (p ==null) {
+
+    Hibernate.initialize(p.getLikes());
+    if (p ==null) {
             throw new IllegalArgumentException("post cannot be null");
         }
         try{
@@ -57,4 +61,7 @@ public class PostServicelmpl implements IPostService {
 
     return  postRepository.findAll();
 }
+
+
+
 }

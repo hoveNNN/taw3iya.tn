@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Post {
     private String type;
     @OneToMany
     private List<Like> likes=new ArrayList<Like>();
-    @OneToMany(mappedBy = "post")
+    @ManyToMany
     private List<Comment> comments=new ArrayList<Comment>();
     //comeent
     @ManyToOne
