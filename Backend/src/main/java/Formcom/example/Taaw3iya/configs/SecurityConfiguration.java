@@ -55,7 +55,10 @@ public class SecurityConfiguration {
             "api/post/getAllPosts",
             "api/like/getAllLikes",
             "api/like/createlike/{idpost}",
-            "api/post/getPostByIdd/{id}"
+            "api/post/getPostByIdd/{id}",
+            "api/like/deleteReaction/{idpost}",
+            "api/comment/getCommentForPost/{idpost}",
+            "api/comment/ajoutercomment/{idpost}"
 
 
 

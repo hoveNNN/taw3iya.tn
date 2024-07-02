@@ -18,4 +18,6 @@ public interface ILikeService {
     public List<Like> getAllLikes();
 
     public Boolean userAlreadylikethepost(Long iduser, Long idpost);
+
+    public Long getIdOfLikeByuUserandPost(Long iduser ,Long idpost);
 }

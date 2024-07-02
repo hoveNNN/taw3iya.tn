@@ -26,10 +26,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 // @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @RequestMapping("/api/post")
 @RestController
@@ -56,8 +54,18 @@ public class PostController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping({"/getAllPosts"})
     public ResponseEntity<Object> getProducts(){
+        List <Post> p=postService.getAllPost();
+        for(Post pp:p){
+            List<Like> likes= likeService.getAllLikes();
+            List<Like> likes1= likes.stream().filter(like -> Objects.equals(like.getPoste(), pp.getId())).toList();
+            pp.setLikes(likes1);
+            pp.setComments(null);
+            Hibernate.initialize(pp);
 
-        return new ResponseEntity<>(postService.getAllPost(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(p, HttpStatus.OK);
+
 
     }
 
@@ -65,10 +73,11 @@ public class PostController {
     public ResponseEntity<Object> getpostByid33(@PathVariable("id")Long id){
        Optional <Post> p=postService.getPost(id);
       List<Like> likes= likeService.getAllLikes();
-      List<Like> likes1= (List<Like>) likes.stream().filter(like -> like.getPoste()==id);
+      List<Like> likes1= likes.stream().filter(like -> Objects.equals(like.getPoste(), id)).toList();
+      List<Comment> comments=commentService.getAllComments();
         if (p.isPresent()){
             p.get().setLikes(likes1);
-            p.get().getLikes();
+            p.get().setComments(null);
             Hibernate.initialize(p);
             return new ResponseEntity<>(p, HttpStatus.OK);
         }else{

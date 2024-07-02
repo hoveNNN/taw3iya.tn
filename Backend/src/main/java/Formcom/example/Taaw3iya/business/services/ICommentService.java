@@ -17,5 +17,5 @@ public interface ICommentService {
 
     public List<Comment> getAllComments();
 
-//    public List<Comment> gettAllCommentforPost();
+  public Optional<Comment> gettAllCommentforPost(long idpost);
 }

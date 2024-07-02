@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 @Service
 @Transactional
@@ -42,7 +43,7 @@ public class LikeServicelmpl implements ILikeService {
     public Boolean userAlreadylikethepost(Long iduser, Long idpost){
       Optional <Like> like=likerepository.findByposte(idpost);
 
-       like=like.filter(like1 -> like1.getUser().getIDD()==iduser);
+       like=like.filter(like1 -> Objects.equals(like1.getUser().getIDD(), iduser));
 
        if(like.isPresent()){
            return  true;
@@ -52,5 +53,21 @@ public class LikeServicelmpl implements ILikeService {
 
 
     }
+
+    @Override
+    public Long getIdOfLikeByuUserandPost(Long iduser, Long idpost){
+        Optional <Like> like=likerepository.findByposte(idpost);
+
+        like=like.filter(like1 -> Objects.equals(like1.getUser().getIDD(), iduser));
+
+        if(like.isPresent()){
+            return  like.get().getId();
+        }else {
+            return 0L;
+        }
+
+
+    }
+
 }
 

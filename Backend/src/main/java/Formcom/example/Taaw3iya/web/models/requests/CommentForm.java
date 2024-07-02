@@ -11,5 +11,5 @@ import lombok.Setter;
 @Setter
 public class CommentForm {
     private  String value;
-    private  Long post_id;
+
 }
