@@ -24,17 +24,11 @@ export class PostComponent implements OnInit {
 
   onSubmit() {
     
-    this.modalService.dismissAll(); // Close the modal after submission
+    this.modalService.dismissAll(); 
   }
-  onFileChange(event: Event, fileType: string) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      if (fileType === 'image') {
-        this.post.image = file;
-      } else if (fileType === 'video') {
-        this.post.video = file;
-      }
-    }
+  closeModal() {
+    this.modalService.dismissAll()
   }
+  
+
 }

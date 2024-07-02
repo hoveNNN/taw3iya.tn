@@ -27,12 +27,7 @@ export class LoginComponent implements OnInit {
     this.closeModal();
     this.router.navigate(['/resetPassword']); 
   }
-  onSignIn():void{
-    this.authService.signIn();
-  }
-  onSignOut():void{
-    this.authService.signOut();
-  }
+  
   
   }
   
