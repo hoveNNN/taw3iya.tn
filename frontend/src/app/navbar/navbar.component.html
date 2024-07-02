@@ -9,31 +9,35 @@
             class="nav-link active d-flex flex-column text-center"
             aria-current="page"
             routerLink=""
-            ><i class="fas fa-home fa-lg"></i><span class="small">Home</span></a
           >
+            <i class="fas fa-home fa-lg"></i>
+            <span class="small">Home</span>
+          </a>
         </li>
-    
-        <li class="nav-item ">
-          <a class="nav-link" routerLink="/user">Contact</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link d-flex flex-column text-center  "
+            aria-current="page"
+            
+          >
+            <i class="fas fa-file-alt fa-lg "></i>
+            
+            <span class="small dropdown-toggle">Topics</span>
+
+          </a>
+          <div class="dropdown-content " style="z-index: 50">
+            <a routerLink="/sujet">Technologie</a>
+            <a>Link 2</a>
+            <a>Link 3</a>
+          </div>
         </li>
-       
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link d-flex flex-column text-center  "
-              aria-current="page"
-              href="#"
-            >
-              <i class="fas fa-file-alt fa-lg dropdown-toggle"></i>
-              <span class="small">topics</span>
-            </a>
-            <div class="dropdown-content" style="z-index: 50">
-              <a routerLink="/sujet">Technologie</a>
-              <a>Link 2</a>
-              <a>Link 3</a>
-            </div>
-          </li>
-        
-      </ul>
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center" >
+            <i class="fas fa-question-circle fa-lg"></i> <span class="small">Help</span>
+          </a>
+        </li>
+
+        </ul>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
