@@ -18,6 +18,9 @@ public class Post {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
+    @Column(nullable = true)
+    private String image;
+
     @OneToMany
     private List<Like> likes=new ArrayList<Like>();
     @ManyToMany

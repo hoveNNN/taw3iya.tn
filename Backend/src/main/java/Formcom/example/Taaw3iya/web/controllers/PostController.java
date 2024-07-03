@@ -4,6 +4,7 @@ import Formcom.example.Taaw3iya.business.services.AuthenticationService;
 import Formcom.example.Taaw3iya.business.services.ICommentService;
 import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
+import Formcom.example.Taaw3iya.business.serviceslmpl.FilesStorageServiceImpl;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
 import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.entities.Post;
@@ -12,6 +13,8 @@ import Formcom.example.Taaw3iya.dao.repository.UserRepository;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
 
 import Formcom.example.Taaw3iya.web.models.requests.PostDTO;
+import Formcom.example.Taaw3iya.web.models.requests.UploadPost;
+import Formcom.example.Taaw3iya.web.response.ResponseMessage;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.ReadingConverter;
@@ -25,6 +28,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
@@ -46,6 +50,11 @@ public class PostController {
 
     @Autowired
     private ICommentService commentService;
+
+    @Autowired
+    FilesStorageServiceImpl StorageService;
+
+
     @Autowired
    private  UserDetailsService userDetailsService;
     @Autowired
@@ -96,49 +105,54 @@ public class PostController {
 
     @PreAuthorize("hasAnyRole('ADMIN')")
      @RequestMapping({"/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod(@RequestBody PostDTO postfrom) throws DuplicatePostExecption {
-
-       
+     public ResponseEntity<Object> ajouterprod(@RequestParam("file") MultipartFile file, @RequestParam("value") String value) throws DuplicatePostExecption {
         List<Like> likes1=new ArrayList<Like>();
 //        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
+          Post P1=new Post(idCount++,value,null,likes1,comments1,authservice.getUserauth(this.getuseremail()));
 
-          Post P1=new Post(idCount++,postfrom.getValue(),likes1,comments1,authservice.getUserauth(this.getuseremail()));
-             // Add the product if the category exists
- //            postService.addPost(new Post(
- //                    idCount++,
- //                    post.getType(),likes1
- //                      // Pass the existing category
- //            ));
-         postService.addPost(P1);
-             return new ResponseEntity<>(P1, HttpStatus.OK);
+        String message="";
+        postService.addPost(P1);
+
+        try{
+            String fileName = StorageService.save(file);
+            this.postService.putImage(idCount,fileName);
+            message = "File uploaded Successfully"+file.getOriginalFilename();
+        }catch(Exception e){
+        message = "could Not upload the file"+file.getOriginalFilename()+".error:"+e.getMessage();
+        }
+
+        P1=postService.getPost(idCount).get();
+        postService.updatePost(P1,idCount);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 
          }
         @PreAuthorize("hasAnyRole('ROLE_USER')")
         @GetMapping({"/testRole"})
         public ResponseEntity<Object> ajouterprod2()   {
-            
-           
-            
+
+
+
                 return new ResponseEntity<>("USer Is here add successfully",HttpStatus.OK);
-    
+
             }
 
             @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
             @RequestMapping({"/testAdmin"})
             public ResponseEntity<Object> ajouterprod22()   {
-                
-               
-                
+
+
+
                     return new ResponseEntity<>("ADMIN Is here add successfully",HttpStatus.OK);
-        
+
                 }
-                
+
                 @RequestMapping({"/testForall"})
                 public ResponseEntity<Object> ajouterprod33()   {
 
                         return new ResponseEntity<>("ADMIN and User Is here add successfully",HttpStatus.OK);
-            
+
                     }
     @GetMapping(value="/getPostById/{id}")
     public ResponseEntity<Object> getPostbyId(@PathVariable("id")Long id) {
@@ -185,4 +199,26 @@ public class PostController {
     }
     }
 
-
+//
+//@PreAuthorize("hasAnyRole('ADMIN')")
+//@RequestMapping({"/ajouterPost"})
+//public ResponseEntity<Object> ajouterprod(UploadPost context) throws DuplicatePostExecption {
+//
+//
+//    List<Like> likes1=new ArrayList<Like>();
+////        HashSet<Like> likes1=new HashSet<Like>();
+//    List<Comment> comments1=new ArrayList<Comment>();
+//    Post P1=new Post(idCount++,context.getValue(),null,likes1,comments1,authservice.getUserauth(this.getuseremail()));
+//    postService.addPost(P1);
+//    String message="";
+//
+//    try{
+//        String fileName = StorageService.save(context.getFile());
+//        this.postService.putImage(idCount,fileName);
+//        message = "File uploaded Successfully"+context.getFile().getOriginalFilename();
+//    }catch(Exception e){
+//        message = "could Not upload the file"+context.getFile().getOriginalFilename()+".error:"+e.getMessage();
+//    }
+//    return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+//
+//}

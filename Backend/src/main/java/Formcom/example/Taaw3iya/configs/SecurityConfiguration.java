@@ -58,7 +58,8 @@ public class SecurityConfiguration {
             "api/post/getPostByIdd/{id}",
             "api/like/deleteReaction/{idpost}",
             "api/comment/getCommentForPost/{idpost}",
-            "api/comment/ajoutercomment/{idpost}"
+            "api/comment/ajoutercomment/{idpost}",
+            "api/storage/upload/{iduser}"
 
 
 

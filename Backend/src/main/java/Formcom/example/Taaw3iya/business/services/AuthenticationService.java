@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthenticationService {
     private final UserRepository userRepository;
@@ -23,16 +25,19 @@ public class AuthenticationService {
     
     private final AuthenticationManager authenticationManager;
 
+    private final IFilesStorageService filesStorageService;
     
   
     public AuthenticationService(
         UserRepository userRepository,
         AuthenticationManager authenticationManager,
-        PasswordEncoder passwordEncoder
+        PasswordEncoder passwordEncoder,
+        IFilesStorageService filesStorageService
     ) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.filesStorageService=filesStorageService;
     }
 
     public User signup(RegisterUserDto input) throws DuplicateUserException{
@@ -65,8 +70,35 @@ public class AuthenticationService {
         return userRepository.findByEmail(mail).get();
     }
 
+
+    public User updateUserImage(Long id , String filename){
+
+
+        if(id == 0) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+            Optional<User> user=userRepository.findById(id);
+            if (user.isPresent()){
+                if(user.get().getImage()==null){
+                    user.get().setImage(filename);
+                }else{
+                    this.filesStorageService.delete(user.get().getImage());
+
+                    user.get().setImage(filename);
+                }
+                return  userRepository.save(user.get());
+            }else{
+                return null;
+            }
+
+
+
+
+    }
+}
+
 // here will get the id of the connected user
 
 
 
-}
+
