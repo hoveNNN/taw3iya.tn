@@ -105,29 +105,20 @@ public class PostController {
 
     @PreAuthorize("hasAnyRole('ADMIN')")
      @RequestMapping({"/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod(@RequestParam("file") MultipartFile file, @RequestParam("value") String value) throws DuplicatePostExecption {
+     public ResponseEntity<Object> ajouterprod(@RequestParam("value") String value) throws DuplicatePostExecption {
         List<Like> likes1=new ArrayList<Like>();
 //        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
-          Post P1=new Post(idCount++,value,null,likes1,comments1,authservice.getUserauth(this.getuseremail()));
+         Post P1=new Post(idCount++,value,likes1,comments1,authservice.getUserauth(this.getuseremail()));
 
-        String message="";
+
         postService.addPost(P1);
 
-        try{
-            String fileName = StorageService.save(file);
-            this.postService.putImage(idCount,fileName);
-            message = "File uploaded Successfully"+file.getOriginalFilename();
-        }catch(Exception e){
-        message = "could Not upload the file"+file.getOriginalFilename()+".error:"+e.getMessage();
-        }
 
-        P1=postService.getPost(idCount).get();
-        postService.updatePost(P1,idCount);
+        return new ResponseEntity<>("Post ajouted ",HttpStatus.OK);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 
-         }
+    }
         @PreAuthorize("hasAnyRole('ROLE_USER')")
         @GetMapping({"/testRole"})
         public ResponseEntity<Object> ajouterprod2()   {

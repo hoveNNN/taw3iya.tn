@@ -68,27 +68,27 @@ public class PostServicelmpl implements IPostService {
 
     return  postRepository.findAll();
 }
-
-    @Override
-    public Post putImage(Long id ,String filename) {
-
-        if(id == 0) {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
-        Optional<Post> post=postRepository.findById(id);
-        if (post.isPresent()){
-            if(post.get().getImage()==null){
-                post.get().setImage(filename);
-            }else{
-                this.filesStorageService.delete(post.get().getImage());
-
-                post.get().setImage(filename);
-            }
-            return  postRepository.save(post.get());
-        }else{
-            return null;
-        }
-
-
-    }
+//
+//    @Override
+//    public Post putImage(Long id ,String filename) {
+//
+//        if(id == 0) {
+//            throw new IllegalArgumentException("ID cannot be null");
+//        }
+//        Optional<Post> post=postRepository.findById(id);
+//        if (post.isPresent()){
+//            if(post.get().getImage()==null){
+//                post.get().setImage(filename);
+//            }else{
+//                this.filesStorageService.delete(post.get().getImage());
+//
+//                post.get().setImage(filename);
+//            }
+//            return  postRepository.save(post.get());
+//        }else{
+//            return null;
+//        }
+//
+//
+//    }
 }

@@ -95,6 +95,22 @@ public class AuthenticationService {
 
 
     }
+    public User updateUserPassword(String email, String password , String newPassword, String confirmPassword) {
+        User user=getUserauth(email);
+
+
+            if (newPassword.equals(confirmPassword)){
+                if (passwordEncoder.matches(password, user.getPassword())) {
+                    user.setPassword(passwordEncoder.encode(newPassword));
+                }else{
+                    throw new IllegalArgumentException("Password does not match");
+                }
+                userRepository.save(user);
+                return user;
+            }else return null;
+    }
+
+
 }
 
 // here will get the id of the connected user
