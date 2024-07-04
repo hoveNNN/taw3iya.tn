@@ -64,8 +64,10 @@ public class SecurityConfiguration {
             "auth/updateuser",
             "api/topic",
             "api/topic/{id}",
-            "api/topic/getopic/{id}"
-
+            "api/topic/getopic/{id}",
+            "api/user/{id}",
+            "api/user/delete/{id}",
+            "users"
 
 
             };
@@ -105,13 +107,14 @@ public class SecurityConfiguration {
 
         http
         .csrf(AbstractHttpConfigurer::disable)
-        .cors(t -> corsConfigurationSource())
+                .cors(t -> corsConfigurationSource())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .requestMatchers("/api/post/testAdmin").hasRole(ADMIN.name())
                                 .requestMatchers( "/api/post/testRole").hasRole(USER.name())
                                 .requestMatchers( "/api/post/ajouterPost").hasRole(ADMIN.name())
+                                .requestMatchers("api/user/allUsers").hasRole(ADMIN.name())
 
                                 .anyRequest()
                                 .authenticated()

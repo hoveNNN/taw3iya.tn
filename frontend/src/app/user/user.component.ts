@@ -17,7 +17,9 @@ export class UserComponent implements OnInit {
     // this.users = this.userService.getUsers();
     this.userService.getUsers().subscribe(
       {
-        next:(users:User[])=>{this.users=users}
+        next:(users:User[])=>{
+          console.log(users);
+          this.users=users}
         
       }
     )

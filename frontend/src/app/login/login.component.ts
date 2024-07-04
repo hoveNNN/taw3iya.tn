@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { LoginDto } from '../shared/create-user';
 import { StorageService } from '../services/storage.service';
+import { user } from '../shared/users';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   AuthUserSub!: Subscription; // Subscription to the authenticated user observable
 
   // Inject AuthService and Router in the constructor
-  constructor(private authService: AuthService, private router: Router,private storageService:StorageService) { }
+  constructor(private authService: AuthService, private router: Router,private storageService:StorageService, private login: MatDialog) { }
 
   // Lifecycle hook that is called after Angular has initialized all data-bound properties
   ngOnInit() {
@@ -31,7 +32,15 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
+  closeDialogAfterDelay() {
+      setTimeout(() => {
+        this.login.closeAll();
+        this.router.navigate(['/']);
+        setTimeout(() => {
+           // Navigate to home after 0.1 seconds
+        }, 100); // 0.1 second delay
+      }, 2000); // 2-second delay
+  }
   // Method to handle the sign-in form submission
   onSubmitSingin(formLogin: NgForm) {
     // Validate the form
@@ -47,9 +56,9 @@ export class LoginComponent implements OnInit {
     // Call the login method from AuthService
     this.authService.login(dto).subscribe({
       next: userData => {
+        
         StorageService.saveToken(userData.token);
-        // On successful login, navigate to the home page
-        this.router.navigate(['/']);
+        this.closeDialogAfterDelay();
       },
       error: err => {
         // On error, set the error message and log it to the console
@@ -57,6 +66,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
 
   // Lifecycle hook that is called when the component is destroyed
   ngOnDestroy() {

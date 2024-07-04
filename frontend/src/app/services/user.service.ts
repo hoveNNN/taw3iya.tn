@@ -17,11 +17,11 @@ export class UserService {
   constructor(private httpClient: HttpClient, @Inject ('BaseURL')private baseURL:any) { }
 
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.baseURL+"products");
+    return this.httpClient.get<User[]>(this.baseURL+"users");
   }
 
   getUserById(id: number):Observable<User> {
-    return this.httpClient.get<User>(this.baseURL+"products/"+id);
+    return this.httpClient.get<User>(this.baseURL+"users/"+id);
   }
 
   // deleteUserById(id: number): void {
@@ -31,7 +31,7 @@ export class UserService {
   //   }
   // }
   deleteUserById(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.baseURL+"products/"+id);
+    return this.httpClient.delete<any>(this.baseURL+"user/"+id);
     }
 // addUser(user:User):Observable<User>{
 //   const httpOptions={
