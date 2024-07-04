@@ -52,6 +52,7 @@ public class TopicController {
   @DeleteMapping(value="/{id}")
     public ResponseEntity<Object> deletetopic(@PathVariable("id")Long id) {
         Optional<Topic> topic=topicService.getTopic(id);
+
         if(topic.isPresent()){
           topicService.deleteTopic(id);
 

@@ -64,7 +64,9 @@ public class SecurityConfiguration {
             "auth/updateuser",
             "api/topic",
             "api/topic/{id}",
-            "api/topic/getopic/{id}"
+            "api/topic/getopic/{id}",
+            "api/user/{id}",
+            "api/user/delete/{id}",
 
 
 
@@ -105,12 +107,14 @@ public class SecurityConfiguration {
 
         http
         .csrf(AbstractHttpConfigurer::disable)
+                .cors(t -> corsConfigurationSource())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .requestMatchers("/api/post/testAdmin").hasRole(ADMIN.name())
                                 .requestMatchers( "/api/post/testRole").hasRole(USER.name())
                                 .requestMatchers( "/api/post/ajouterPost").hasRole(ADMIN.name())
+                                .requestMatchers("api/user/allUsers").hasRole(ADMIN.name())
 
                                 .anyRequest()
                                 .authenticated()
@@ -131,8 +135,8 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:8005"));
-        configuration.setAllowedMethods(List.of("GET","POST"));
+        configuration.setAllowedOrigins(List.of("*"));
+        configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
