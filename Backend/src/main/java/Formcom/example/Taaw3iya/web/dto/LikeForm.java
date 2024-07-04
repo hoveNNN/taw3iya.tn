@@ -1,4 +1,4 @@
-package Formcom.example.Taaw3iya.web.models.requests;
+package Formcom.example.Taaw3iya.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CommentForm {
+public class LikeForm {
     private  String value;
     private  Long post_id;
 }

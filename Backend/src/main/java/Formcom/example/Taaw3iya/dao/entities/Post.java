@@ -17,9 +17,14 @@ public class Post {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
-    @OneToMany(mappedBy = "post")
+    private String subject;
+    private String description;
+    @OneToMany
     private List<Like> likes=new ArrayList<Like>();
-    @OneToMany(mappedBy = "post")
+    @OneToMany
     private List<Comment> comments=new ArrayList<Comment>();
-
+    @ManyToOne
+    private User user;
+    @ManyToMany
+    private List<Tag> tags = new ArrayList<>();
 }
