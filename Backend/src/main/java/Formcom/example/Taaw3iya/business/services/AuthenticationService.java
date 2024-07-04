@@ -50,6 +50,7 @@ public class AuthenticationService {
                     user.setLastName(input.getLastName());
                     user.setFirstName(input.getFirstName());
                     user.setEmail(input.getEmail());
+                    user.setGender(input.getGender());
                     user.setPassword(passwordEncoder.encode(input.getPassword()));
 
                     user.setRole(USER);

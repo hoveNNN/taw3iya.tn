@@ -2,6 +2,7 @@ package Formcom.example.Taaw3iya.web.dto;
 
 
 
+import Formcom.example.Taaw3iya.dao.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,8 @@ public class RegisterUserDto {
     private String lastName;
 
     private String email;
+
+    private Gender gender;
     
     private String password;
 
