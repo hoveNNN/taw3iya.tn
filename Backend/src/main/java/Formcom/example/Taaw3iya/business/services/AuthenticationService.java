@@ -15,7 +15,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
+
+import static Formcom.example.Taaw3iya.dao.enums.Role.USER;
 
 @Service
 public class AuthenticationService {
@@ -40,13 +43,19 @@ public class AuthenticationService {
         this.filesStorageService=filesStorageService;
     }
 
-    public User signup(RegisterUserDto input) throws DuplicateUserException{
+    public User signup(RegisterUserDto input) throws Exception {
         User user = new User();
-                user.setFullName(input.getFullName());
-                user.setEmail(input.getEmail());
-                user.setPassword(passwordEncoder.encode(input.getPassword()));
-                 System.out.println(input.getRole());
-                user.setRole(input.getRole());
+
+                if (Objects.equals(input.getPassword(), input.getConfirmpassword())){
+                    user.setFullName(input.getFullName());
+                    user.setEmail(input.getEmail());
+                    user.setPassword(passwordEncoder.encode(input.getPassword()));
+
+                    user.setRole(USER);
+                }else{
+                    throw new Exception("Password not the samess");
+                }
+
         
         return userRepository.save(user);
     }

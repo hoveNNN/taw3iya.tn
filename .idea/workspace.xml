@@ -5,22 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/models/requests/Changepass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ITopicService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/TopicServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Topic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/TopicRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/TopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/FilesStorageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/FilesStorageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/42cd7c5f-bde3-44ef-9efb-04a6bc5bad6d.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5c3427d4-797a-4cfe-9bf5-1a191377a1f4.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/657bad1a-9c42-4667-880d-8f4062c26ea5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/e6d564c0-bf90-4b87-a7ce-40337f735a22.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/fc5c50db-8d3f-431d-8d66-de6850423714.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/RegisterUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/RegisterUserDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -126,6 +124,8 @@
       <workItem from="1720019617119" duration="4708000" />
       <workItem from="1720024883049" duration="1138000" />
       <workItem from="1720035923671" duration="917000" />
+      <workItem from="1720041394833" duration="3213000" />
+      <workItem from="1720078938249" duration="859000" />
     </task>
     <servers />
   </component>

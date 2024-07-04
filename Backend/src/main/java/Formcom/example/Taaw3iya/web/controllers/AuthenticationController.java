@@ -39,7 +39,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) throws DuplicateUserException {
+    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) throws Exception {
 
 
             User registeredUser = authenticationService.signup(registerUserDto);

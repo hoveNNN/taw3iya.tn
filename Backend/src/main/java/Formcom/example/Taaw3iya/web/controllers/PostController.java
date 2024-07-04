@@ -104,12 +104,13 @@ public class PostController {
 
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-     @RequestMapping({"/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod(@RequestParam("value") String value) throws DuplicatePostExecption {
+     @RequestMapping({"/{idtopic}/ajouterPost"})
+     public ResponseEntity<Object> ajouterprod(@PathVariable("idtopic")Long idtopic,@RequestParam("value") String value) throws DuplicatePostExecption {
         List<Like> likes1=new ArrayList<Like>();
 //        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
-         Post P1=new Post(idCount++,value,likes1,comments1,authservice.getUserauth(this.getuseremail()));
+
+         Post P1=new Post(idCount++,value,likes1,comments1,authservice.getUserauth(this.getuseremail()),idtopic);
 
 
         postService.addPost(P1);

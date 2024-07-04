@@ -29,5 +29,7 @@ public class Post {
     @ManyToOne
     private User User_id;
 
+    private Long topic;
+
 
 }
