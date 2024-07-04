@@ -14,13 +14,17 @@ import Formcom.example.Taaw3iya.dao.enums.Role;
 @Setter
 @Getter
 public class RegisterUserDto {
+    private String fullName;
+
     private String email;
     
     private String password;
-    
-    private String fullName;
 
-    private Role role;
+    private String confirmpassword;
+    
+
+
+
     
     // getters and setters here...
 

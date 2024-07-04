@@ -2,12 +2,9 @@ package Formcom.example.Taaw3iya.business.serviceslmpl;
 
 import Formcom.example.Taaw3iya.business.services.ICommentService;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
-import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.repository.CommentRepository;
-import Formcom.example.Taaw3iya.dao.repository.LikeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,9 +35,11 @@ public class CommentServicelmpl implements ICommentService {
     public List<Comment> getAllComments(){
         return  commentRepository.findAll();
     }
-//    @Override
-//    public List<Comment> gettAllCommentforPost(long idpost){
-//
-//        return commentRepository.findAll(Sort.by(idpost));
-//    }
+    @Override
+    public Optional<Comment> gettAllCommentforPost(long idpost){
+
+        Optional <Comment> comments=commentRepository.findByposte(idpost);
+        return comments;
+
+    }
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import Formcom.example.Taaw3iya.dao.enums.IntercationType; // Ensure this is the correct package
+
 
 import java.security.PrivateKey;
 import java.util.List;
@@ -19,11 +21,18 @@ public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String value;
-//    @ManyToOne
-//    @JoinColumn(name="post_id")
-//    private Post post;
-    @OneToOne
-    private User User_id;
+    @Enumerated(EnumType.STRING)
+    private IntercationType value;
+
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User User;
+    @Column(name="post_id")
+    private Long poste;
+
+
 
 }
+
+

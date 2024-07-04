@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static Formcom.example.Taaw3iya.dao.enums.IntercationType.LIKE;
+
 @RequestMapping("/api/like")
 @RestController
 public class LikeController {
@@ -37,27 +39,56 @@ public class LikeController {
     public String getAllLikesbypostId() {
         return "Hello, World!";
     }
+    @RequestMapping("/deleteReaction/{idpost}")
+    public ResponseEntity<Object> deleteReaction(@PathVariable("idpost") Long idpost) {
+        Long iduser= Long.valueOf(authservice.getidOfUserAuth(getuseremail()));
+        Boolean test=likeService.userAlreadylikethepost(iduser,idpost);
+        if(test){
+        Long idLike=likeService.getIdOfLikeByuUserandPost(iduser,idpost);
+           if (idLike!=0){
+               likeService.deleteLike(idLike);
+
+               return new ResponseEntity<>("Like deleted succsusfuly",HttpStatus.OK);
+           }else{
+               return new ResponseEntity<>("Like not succsusfuly",HttpStatus.NOT_FOUND);
+           }
+
+
+        }
+        else{
+            return new ResponseEntity<>("Like not Found",HttpStatus.NOT_FOUND);
+        }
+    }
 
     @RequestMapping("/createlike/{idpost}")
-
     public ResponseEntity<Object> createlikeforPost(@PathVariable("idpost")Long id) throws DuplicatePostExecption {
 
 //        Like l1=new Like(idCountLikes++,"Like",authservice.getUserauth(getuseremail()));
 //        likeService.addLike(l1);
 //        System.out.println("big problem");
 //        return new ResponseEntity<>("like ajouted",HttpStatus.OK);
+        Long iduser= Long.valueOf(authservice.getidOfUserAuth(getuseremail()));
 
 
+        Boolean test=likeService.userAlreadylikethepost(iduser,id);
         Optional<Post> post=postService.getPost(id);
         if (post.isPresent()) {
-            Like l1=new Like(idCountLikes++,"Like",authservice.getUserauth(getuseremail()));
-            likeService.addLike(l1);
-            List<Like> Likes=postService.getPost(id).get().getLikes();
-            Likes.add(l1);
-            postService.getPost(id).get().setLikes(Likes);
-            postService.updatePost(post.get(),id);
-            System.out.println("maybeis good");
-            return new ResponseEntity<>(l1,HttpStatus.OK);
+          if (test){
+              return new ResponseEntity<>("user already like this post",HttpStatus.BAD_REQUEST);
+          }else {
+              Like l1=new Like(idCountLikes++,LIKE,authservice.getUserauth(getuseremail()),id);
+              likeService.addLike(l1);
+
+              List<Like> Likes=post.get().getLikes();
+              Likes.add(l1);
+              post.get().setLikes(Likes);
+              postService.updatePost(post.get(),id);
+
+              return new ResponseEntity<>("Like ajouteed to the post",HttpStatus.OK);
+          }
+
+
+
         }else{
             return new ResponseEntity<>("failed:post  not found",HttpStatus.NOT_FOUND);
         }

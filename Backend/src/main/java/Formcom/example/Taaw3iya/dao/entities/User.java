@@ -2,7 +2,6 @@ package Formcom.example.Taaw3iya.dao.entities;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ import Formcom.example.Taaw3iya.dao.enums.Role;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+
 @Setter
 @Getter
 @Table(name = "users")
@@ -38,6 +37,9 @@ public class User implements UserDetails{
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = true)
+    private String image;
     
     @Column(nullable = true)
     private Role role;
@@ -53,8 +55,8 @@ public class User implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.getAuthorities();
     }
-    public Integer getIDD(){
-        return this.id;
+    public Long getIDD(){
+        return Long.valueOf(this.id);
     }
 
     // @Override

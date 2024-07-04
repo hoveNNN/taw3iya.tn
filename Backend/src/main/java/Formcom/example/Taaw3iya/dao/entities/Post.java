@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -17,14 +18,18 @@ public class Post {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
-    private String subject;
-    private String description;
+//    @Column(nullable = true)
+//    private String image;
+
     @OneToMany
     private List<Like> likes=new ArrayList<Like>();
-    @OneToMany
-    private List<Comment> comments=new ArrayList<Comment>();
-    @ManyToOne
-    private User user;
     @ManyToMany
-    private List<Tag> tags = new ArrayList<>();
+    private List<Comment> comments=new ArrayList<Comment>();
+    //comeent
+    @ManyToOne
+    private User User_id;
+
+    private Long topic;
+
+
 }
