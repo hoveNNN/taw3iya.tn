@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../shared/user';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +12,12 @@ import { User } from '../shared/user';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  users: User[] = [];
+  isAuth:boolean=false;
+  user: User | undefined;
+  idUser: any;
   constructor(
     private login: MatDialog,
-    private userService: UserService,
-    private route: ActivatedRoute,
-    private router: Router
+   private authService:AuthService
   ) {}
   openLogIn() {
     this.login.open(LoginComponent);
@@ -30,10 +31,14 @@ export class NavbarComponent {
   closeModal() {
     this.isVisible = false;
   }
-  user: User | undefined;
-  idUser: any;
+  
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
+    this.authService.authSubject.subscribe({
+      next:(isAuth:boolean)=>{
+        this.isAuth=isAuth;
+      }
+    });
+    this.authService.emitAuthSubject();
   }
 }

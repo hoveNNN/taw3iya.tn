@@ -14,10 +14,26 @@ export class UserComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
+    // this.users = this.userService.getUsers();
+    this.userService.getUsers().subscribe(
+      {
+        next:(users:User[])=>{this.users=users}
+        
+      }
+    )
+    console.log('users'+this.users);
   }
 
   onDelete(id: number) {
-    this.userService.deleteUserById(id);
+    this.userService.deleteUserById(id).subscribe(
+      {
+        next:(res:any)=>{
+          let index=this.users.findIndex(user=> user.id===id);
+          if (index !=-1){
+            this.users.splice(index,1);
+          }
+        }
+      }
+    )
   }
 }

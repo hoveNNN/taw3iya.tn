@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  UserComponent } from './user/user.component';
 import { SujetComponent } from './sujet/sujet.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +20,8 @@ import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostComponent } from './post/post.component';
 import { FaqComponent } from './faq/faq.component';
+import {HttpClientModule} from '@angular/common/http'
+import { BaseURL } from './shared/baseUrl';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { FaqComponent } from './faq/faq.component';
     ChangePasswordComponent,
     PostComponent,
     FaqComponent,
+  
     
     
     
@@ -48,11 +51,15 @@ import { FaqComponent } from './faq/faq.component';
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule
     
    
     
   ],
-  providers: [],
+  providers: [{
+    provide:'BaseURL',useValue:BaseURL
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

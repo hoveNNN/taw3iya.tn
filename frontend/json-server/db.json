@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "fName": "SS-S9",
+      "lName": "Samsung Galaxy S9",
+      "email": "ssdfsdf@gmail.com",
+      "password": 50,
+      "role": "images/samsung-s9.png",
+      "image": "assets/images/samsung-s9.png"
+    },
+    {
+      "id": "2",
+      "fName": "SS-S9",
+      "lName": "Samsung Galaxy S9",
+      "email": "ssdfsdf@gmail.com",
+      "password": 50,
+      "role": "images/samsung-s9.png",
+      "image": "assets/images/samsung-s9.png"
+    }
+  ]
+}

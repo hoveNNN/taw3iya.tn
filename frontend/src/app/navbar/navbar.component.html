@@ -38,16 +38,7 @@
       </ul>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a
-              class="nav-link d-flex flex-column text-center"
-              aria-current="page"
-              href="#"
-              ><i class="fas fa-comment-dots fa-lg"></i
-              ><span class="small">Messaging</span></a
-            >
-          </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               class="nav-link d-flex flex-column text-center"
               aria-current="page"
@@ -55,8 +46,8 @@
               ><i class="fas fa-bell fa-lg"></i
               ><span class="small">Notifications</span></a
             >
-          </li>
-          <li class="nav-item dropdown">
+          </li> -->
+          <li class="nav-item dropdown" *ngf="isAuth" outerLinkActivate="active">
             <a
               class="nav-link dropdown-toggle d-flex align-items-center"
               id="navbarDropdownMenuLink"

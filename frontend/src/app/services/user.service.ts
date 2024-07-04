@@ -1,34 +1,45 @@
-import { Injectable } from '@angular/core';
-import { User } from '../shared/user';
-import { USERS } from '../shared/users';
+import { Inject, Injectable } from '@angular/core';
+import { User } from '../shared/user'; 
+import { user } from '../shared/users'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = USERS;
+  private users: User[] = user; 
 
-  constructor() { }
+  constructor(private httpClient: HttpClient, @Inject ('BaseURL')private baseURL:any) { }
 
-  getUsers(): User[] {
-    return this.users;
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.baseURL+"products");
   }
 
-  getUserById(id: number): User | undefined {
-    return this.users.find(user => user.id === id);
+  getUserById(id: number):Observable<User> {
+    return this.httpClient.get<User>(this.baseURL+"products/"+id);
   }
 
-  deleteUserById(id: number): void {
-    const index = this.users.findIndex(user => user.id === id);
-    if (index !== -1) {
-      this.users.splice(index, 1);
+  // deleteUserById(id: number): void {
+  //   const index = this.users.findIndex(user => user.id === id); 
+  //   if (index !== -1) {
+  //     this.users.splice(index, 1);
+  //   }
+  // }
+  deleteUserById(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.baseURL+"products/"+id);
     }
+addUser(user:User):Observable<User>{
+  const httpOptions={
+    headers:new HttpHeaders({'content-type':'application/json'})
   }
+  return this.httpClient.post<User>(this.baseURL+'products',user,httpOptions)
+}
 
-  updateUser(updatedUser: User): void {
-    const index = this.users.findIndex(user => user.id === updatedUser.id);
-    if (index !== -1) {
-      this.users[index] = updatedUser;
-    }
-  }
+updateUser(user: User): Observable<User> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  return this.httpClient.put<User>(this.baseURL + 'products/' + user.id, user, httpOptions);
+}
 }

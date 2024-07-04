@@ -15,16 +15,16 @@ import { PostComponent } from './post/post.component';
 import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
-  {path:'',/*canActivate:[authGuard],*/ component:HomeComponent},
-  {path:'user',component:UserComponent},
+  {path:'',/*canActivate:[authGuard]*/ component:HomeComponent},
+  {path:'user', /*canActivate:[authGuard],*/ component:UserComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path: 'sujet',component:SujetComponent},
-  {path:'user/:id',component:UserProfilComponent},
-  {path:'resetPassword',component:ForgotPasswordComponent},
-  {path:'user/:id/edit',component:EditProfilComponent},
-  {path:'settings',component:ChangePasswordComponent},
-  {path:'post', component:PostComponent},
+  {path:'user/:id',/*canActivate:[authGuard],*/ component:UserProfilComponent},
+  {path:'resetPassword',/*canActivate:[authGuard],*/ component:ForgotPasswordComponent},
+  {path:'user/:id/edit',/*canActivate:[authGuard],*/ component:EditProfilComponent},
+  {path:'settings',/*canActivate:[authGuard],*/ component:ChangePasswordComponent},
+  {path:'post',/*canActivate:[authGuard],*/  component:PostComponent},
   {path:'faq',component:FaqComponent},
   {path:'**', component:NotfoundComponent}
   
