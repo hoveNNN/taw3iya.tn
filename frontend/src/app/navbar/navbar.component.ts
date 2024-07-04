@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  constructor(private login:MatDialog){
+  }
+  openLogIn(){
+   this.login.open(LoginComponent)
+  }
+  isVisible: boolean = false; 
 
+  openModal() {
+    this.isVisible = true;
+  }
+
+  closeModal() {
+    this.isVisible = false;
+  }
+ 
 }
