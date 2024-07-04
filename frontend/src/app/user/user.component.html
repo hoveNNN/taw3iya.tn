@@ -20,14 +20,14 @@
                 <td>{{user.lName}}</td>
                 <td>{{user.gender}}</td>
                 <td>{{user.email}}</td>
-                
+
                 <td> <a  class=" btn btn-danger" (click)="onDelete(user.id) "  > Delete</a>
                     <a  class=" btn btn-success mx-3"  routerLink="/user/{{user.id}}" > Show Profil</a></td>
-                
+
             </tr>
         </tbody>
     </table>
-   
+
   </div>
   <ng-template #noUser>
     <p class="alert alert-warning">

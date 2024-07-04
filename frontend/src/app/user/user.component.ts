@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
         next:(users:User[])=>{
           console.log(users);
           this.users=users}
-        
+
       }
     )
     console.log('users'+this.users);
@@ -34,6 +34,8 @@ export class UserComponent implements OnInit {
           if (index !=-1){
             this.users.splice(index,1);
           }
+        },error: (err) => {
+          console.error(`Failed to delete user with id ${id}`, err);
         }
       }
     )

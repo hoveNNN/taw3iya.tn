@@ -1,50 +1,56 @@
 import { Inject, Injectable } from '@angular/core';
-import { User } from '../shared/user'; 
-import { user } from '../shared/users'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { User } from '../shared/user';
+import { handleError } from '../shared/error-handler'; // Centralized error handler
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  httpOptions={
-    headers:new HttpHeaders({'Content-Type':'application/json'}),
-    
+  private userUrl: string;
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private httpClient: HttpClient, @Inject ('BaseURL')private baseURL:any) { }
+  constructor(
+    private httpClient: HttpClient,
+    @Inject('BaseURL') private baseURL: string // Specify type explicitly
+  ) {
+    this.userUrl = `${this.baseURL}users`; // Use template literals for clarity
+  }
 
+  // Fetch all users
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.baseURL+"users");
+    return this.httpClient.get<User[]>(this.userUrl)
+      .pipe(
+        catchError(handleError<User[]>('getUsers', [])) // Centralized error handling
+      );
   }
 
-  getUserById(id: number):Observable<User> {
-    return this.httpClient.get<User>(this.baseURL+"users/"+id);
+  // Fetch user by ID
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.userUrl}/${id}`)
+      .pipe(
+        catchError(handleError<User>(`getUserById id=${id}`)) // Centralized error handling
+      );
   }
 
-  // deleteUserById(id: number): void {
-  //   const index = this.users.findIndex(user => user.id === id); 
-  //   if (index !== -1) {
-  //     this.users.splice(index, 1);
-  //   }
-  // }
-  deleteUserById(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.baseURL+"user/"+id);
-    }
-// addUser(user:User):Observable<User>{
-//   const httpOptions={
-//     headers:new HttpHeaders({'content-type':'application/json'})
-//   }
-//   return this.httpClient.post<User>(this.baseURL+'products',user,httpOptions)
-// }
+  // Delete user by ID
+  deleteUserById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.userUrl}/${id}`)
+      .pipe(
+        catchError(handleError<void>(`deleteUserById id=${id}`)) // Centralized error handling
+      );
+  }
 
-updateUser(user: User): Observable<User> {
-return this.httpClient.put<User>(this.baseURL+'products/'+user.id,user,this.httpOptions);
+  // Update user details
+  updateUser(user: User): Observable<User> {
+    return this.httpClient.put<User>(`${this.userUrl}/${user.id}`, user, this.httpOptions)
+      .pipe(
+        catchError(handleError<User>('updateUser')) // Centralized error handling
+      );
+  }
 }
-}
-  // const httpOptions = {
-  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  // };
-  // return this.httpClient.put<User>(this.baseURL + 'products/' + user.id, user, httpOptions);

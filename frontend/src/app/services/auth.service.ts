@@ -9,7 +9,7 @@ import { AuthResponseData } from '../shared/authResponseData';
   providedIn: 'root'
 })
 export class AuthService {
-  AuthenticatedUser$ = new BehaviorSubject<User | null>(null); 
+  AuthenticatedUser$ = new BehaviorSubject<User | null>(null);
   private isAuth:boolean=false;
   authSubject:Subject<boolean>=new Subject<boolean>()
   constructor(private http: HttpClient,@Inject('BaseURL') private baseURL: any, private storageService: StorageService) { }
@@ -41,16 +41,15 @@ export class AuthService {
   }
 
   login(loginDto: LoginDto){
-    return this.http.post<LoginDto>(this.baseURL + 'auth/login',loginDto);
-    // .pipe(
-    //   catchError(err => {
-    //     let errorMessage = 'An unknown error occurred!';
-    //     if (err.error.message === 'Unauthorized') {
-    //       errorMessage = 'unauthorized';
-    //     }
-    //     return throwError(() => new Error(errorMessage));
-    //   })
-    // );
+    return this.http.post<LoginDto>(this.baseURL + 'auth/login',loginDto).pipe(
+      catchError(err => {
+      let errorMessage = 'An unknown error occurred!';
+      if (err.error.message === 'Unauthorized') {
+        errorMessage = 'unauthorized';
+      }
+        return throwError(() => new Error(errorMessage));
+      })
+    );
   }
 
   // login(email: string, password: string) {
@@ -61,11 +60,11 @@ export class AuthService {
   //     }),
   //     withCredentials: true // Include credentials (cookies) in the request
   //   };
-    
+
   //   return this.http.post<AuthResponseData>(this.baseURL + 'signin', null, httpOptions).pipe(
   //     catchError(err => {
   //       let errorMessage = 'An unknown error occurred!';
-        
+
   //      //  if (err.error.message === 'Bad credentials') {
   //       errorMessage = 'The email address or password you entered is invalid';
   //      //  }
@@ -87,5 +86,5 @@ export class AuthService {
   //   );
   // }
 
-	
+
 }

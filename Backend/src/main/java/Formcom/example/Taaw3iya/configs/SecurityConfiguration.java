@@ -67,7 +67,7 @@ public class SecurityConfiguration {
             "api/topic/getopic/{id}",
             "api/user/{id}",
             "api/user/delete/{id}",
-            "users"
+            "users/**"
 
 
             };
