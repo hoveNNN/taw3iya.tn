@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'sujet',component:SujetComponent},
   {path:'user/:id',/*canActivate:[authGuard],*/ component:UserProfilComponent},
   {path:'resetPassword',/*canActivate:[authGuard],*/ component:ForgotPasswordComponent},
-  {path:'user/:id/edit',/*canActivate:[authGuard],*/ component:EditProfilComponent},
+  {path:'user/edit/:id',/*canActivate:[authGuard],*/ component:EditProfilComponent},
   {path:'settings',/*canActivate:[authGuard],*/ component:ChangePasswordComponent},
   {path:'post',/*canActivate:[authGuard],*/  component:PostComponent},
   {path:'faq',component:FaqComponent},

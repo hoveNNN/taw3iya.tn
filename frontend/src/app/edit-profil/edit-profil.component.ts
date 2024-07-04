@@ -18,44 +18,32 @@ export class EditProfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.idUser = +this.route.snapshot.params['id'];
-    // const fetchedUser = this.userService.getUserById(this.idUser);
-    // if (fetchedUser) {
-    //   this.user = fetchedUser;
-    // } else {
-    //   console.error(`User with ID ${this.idUser} not found.`);
-    // }
+    this.route.paramMap.subscribe(result=>{
+      let id = result.get('id');
+      if (id !="-1") this.initUser(id);
+    })
   }
-  // onSubmit(form:NgForm){
-  //   let user:User={
-  //     id:null,
-  //     fName:form.value.fName,
-  //     lName:form.value.lName,
-  //     gender:form.value.gender,
-  //     email:form.value.email,
-  //     role:form.value.role,
-  //     image:'images/tlogo.jpg'
-
+  initUser(id){
+    this.userService.getUserById(id).subscribe(user=>{
+      this.user=user;
+      console.log(this.user);
+    })
+  }
+  onSubmit(){
+    this.userService.updateUser(this.user).subscribe(
+      user=>{
+        this.router.navigate(['/user/'+this.user.id])
+      }
+    )
+  }
+  // saveUser() {
+  //   if (this.user) {
+  //     this.userService.updateUser(this.user);
+  //     this.router.navigate(['/user', this.user.id]);
+  //   } else {
+  //     console.error('User object is undefined.');
   //   }
-  //   this.userService.addUser(user).subscribe(
-  //     {
-  //       next:(user)=>{this.router.navigateByUrl('/user/'+user.id)},
-  //       error:(error)=>{console.log('add user Failed')},
-  //      complete:()=>console.log('terminer')
-  // });
-  // this.userService.addUser(user).subscribe(
-  //   (contact)=>{ this.router.navigateByUrl("/user")},
-  //   (error)=>console.log("error")
-  // )
   // }
-  saveUser() {
-    if (this.user) {
-      this.userService.updateUser(this.user);
-      this.router.navigate(['/user', this.user.id]);
-    } else {
-      console.error('User object is undefined.');
-    }
-  }
 
 
 }

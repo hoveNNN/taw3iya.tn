@@ -12,31 +12,20 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  isAuth:boolean=false;
-  user: User | undefined;
-  idUser: any;
+  isAuth: boolean = false;
   constructor(
     private login: MatDialog,
-   private authService:AuthService
+    private authService: AuthService
   ) {}
+
   openLogIn() {
     this.login.open(LoginComponent);
   }
-  isVisible: boolean = false;
-
-  openModal() {
-    this.isVisible = true;
-  }
-
-  closeModal() {
-    this.isVisible = false;
-  }
-  
 
   ngOnInit(): void {
     this.authService.authSubject.subscribe({
-      next:(isAuth:boolean)=>{
-        this.isAuth=isAuth;
+      next: (isAuth: boolean) => {
+        this.isAuth = isAuth;
       }
     });
     this.authService.emitAuthSubject();

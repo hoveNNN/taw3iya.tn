@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = user; 
+
   httpOptions={
     headers:new HttpHeaders({'Content-Type':'application/json'}),
-    withCredentials: true
+    
   };
 
   constructor(private httpClient: HttpClient, @Inject ('BaseURL')private baseURL:any) { }
@@ -41,7 +41,7 @@ export class UserService {
 // }
 
 updateUser(user: User): Observable<User> {
-return this.httpClient.put<User>(this.baseURL+'products/'+user.id,user,this.httpOptions)
+return this.httpClient.put<User>(this.baseURL+'products/'+user.id,user,this.httpOptions);
 }
 }
   // const httpOptions = {
