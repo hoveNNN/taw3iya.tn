@@ -60,7 +60,11 @@ public class SecurityConfiguration {
             "api/comment/getCommentForPost/{idpost}",
             "api/comment/ajoutercomment/{idpost}",
             "api/storage/uploadphotouser",
-            "auth/changepas"
+            "auth/changepas",
+            "auth/updateuser",
+            "api/topic",
+            "api/topic/{id}",
+            "api/topic/getopic/{id}"
 
 
 

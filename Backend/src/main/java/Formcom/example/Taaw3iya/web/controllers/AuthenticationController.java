@@ -9,6 +9,7 @@ import Formcom.example.Taaw3iya.exceptions.DuplicateUserException;
 import Formcom.example.Taaw3iya.web.dto.LoginUserDto;
 import Formcom.example.Taaw3iya.web.dto.RegisterUserDto;
 import Formcom.example.Taaw3iya.web.models.requests.Changepass;
+import Formcom.example.Taaw3iya.web.models.requests.UpdateuserDTO;
 import Formcom.example.Taaw3iya.web.response.LoginResponse;
 import Formcom.example.Taaw3iya.business.services.AuthenticationService;
 import Formcom.example.Taaw3iya.business.services.JwtService;
@@ -82,6 +83,19 @@ public class AuthenticationController {
         if (user !=null){
             return new ResponseEntity<>("Password have been updated",HttpStatus.OK);
         }else return new ResponseEntity<>("Password not updated",HttpStatus.BAD_REQUEST);
+
+    }
+
+    @RequestMapping("/updateuser")
+    public ResponseEntity<?> updateuser(@RequestBody UpdateuserDTO newUser){
+
+        User user= this.authenticationService.getUserauth(getuseremail());
+
+
+        if (user !=null){
+            this.authenticationService.updateUser(user,newUser.getFirstname(),newUser.getLastname(), newUser.getEmail());
+            return new ResponseEntity<>("User updated Susccessfully",HttpStatus.OK);
+        }else return new ResponseEntity<>("somthing go worng",HttpStatus.BAD_REQUEST);
 
     }
 }
