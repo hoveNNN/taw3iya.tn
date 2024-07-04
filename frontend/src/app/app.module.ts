@@ -23,6 +23,25 @@ import { FaqComponent } from './faq/faq.component';
 import {HttpClientModule} from '@angular/common/http'
 import { BaseURL } from './shared/baseUrl';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { CreatePostComponent } from './create-post/create-post.component';
+
+
+@NgModule({
+  imports: [
+    MatChipsModule,
+    // Other Angular Material modules
+  ],
+})
+export class YourModule { }
+
+
+
 
 @NgModule({
   declarations: [
@@ -40,6 +59,10 @@ import { BaseURL } from './shared/baseUrl';
     ChangePasswordComponent,
     PostComponent,
     FaqComponent,
+    CreatePostComponent,
+    
+    
+   
   
     
     
@@ -52,8 +75,13 @@ import { BaseURL } from './shared/baseUrl';
     MatDialogModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatChipsModule,
    
     
   ],

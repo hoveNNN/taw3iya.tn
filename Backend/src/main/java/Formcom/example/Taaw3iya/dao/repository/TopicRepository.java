@@ -10,4 +10,5 @@ public interface TopicRepository extends JpaRepository<Topic,Long> {
 
     Optional<Topic> findByTitle(String name);
     Optional<Topic> findById(Long id);
+    Topic save(Topic topic);
 }

@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import Formcom.example.Taaw3iya.dao.enums.Role;
+import Formcom.example.Taaw3iya.dao.enums.Gender;
 
 import java.util.Collection;
 import java.util.Date;
@@ -30,7 +31,14 @@ public class User implements UserDetails{
     private Integer id;
 
     @Column(nullable = false)
-    private String fullName;
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column(nullable = false)
+    private Gender gender;
+
 
     @Column(unique = true, length = 100, nullable = false)
     private String email;

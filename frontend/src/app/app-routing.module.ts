@@ -13,6 +13,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { authGuard } from './guards/auth.guard';
 import { PostComponent } from './post/post.component';
 import { FaqComponent } from './faq/faq.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+
 
 const routes: Routes = [
   {path:'',/*canActivate:[authGuard]*/ component:HomeComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
   {path:'settings',/*canActivate:[authGuard],*/ component:ChangePasswordComponent},
   {path:'post',/*canActivate:[authGuard],*/  component:PostComponent},
   {path:'faq',component:FaqComponent},
+  { path: 'create-post', component: CreatePostComponent },
   {path:'**', component:NotfoundComponent}
   
 ];

@@ -27,4 +27,14 @@ export class StorageService {
   clean(): void {
     window.localStorage.clear(); // Clear all items from localStorage
   }
+
+
+  static saveToken(token: string){
+    window.localStorage.removeItem("token");
+    window.localStorage.setItem("token",token);
+  }
+
+  static getToken(){
+    window.localStorage.getItem("token");
+  }
 }

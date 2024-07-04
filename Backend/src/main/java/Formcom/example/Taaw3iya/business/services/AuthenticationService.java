@@ -47,13 +47,15 @@ public class AuthenticationService {
         User user = new User();
 
                 if (Objects.equals(input.getPassword(), input.getConfirmpassword())){
-                    user.setFullName(input.getFullName());
+                    user.setLastName(input.getLastName());
+                    user.setFirstName(input.getFirstName());
                     user.setEmail(input.getEmail());
+                    user.setGender(input.getGender());
                     user.setPassword(passwordEncoder.encode(input.getPassword()));
 
                     user.setRole(USER);
                 }else{
-                    throw new Exception("Password not the samess");
+                    throw new Exception("Password not the same");
                 }
 
         
@@ -118,6 +120,19 @@ public class AuthenticationService {
                 return user;
             }else return null;
     }
+
+    public User updateUser( User user,String Firstname,String lastname, String email) {
+
+        user.setFirstName(Firstname);
+        user.setLastName(lastname);
+        user.setEmail(email);
+        return userRepository.save(user);
+
+
+
+    }
+
+
 
 
 }

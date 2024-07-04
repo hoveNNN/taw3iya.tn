@@ -1,9 +1,16 @@
 export interface CreateUser {
    
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
+    confirmpassword: String,
     gender:string;
-    role: string;
+    // role: string;
+  }
+
+  export interface LoginDto{
+    email: string;
+    password: string;
+    token?: string;
   }

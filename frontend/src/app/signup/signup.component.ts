@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../shared/user';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, repeat } from 'rxjs';
 import { CreateUser } from '../shared/create-user';
 
 @Component({
@@ -46,8 +46,10 @@ export class SignupComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstname: ['', Validators.required], // Firstname field with required validator
       lastname: ['', Validators.required], // Lastname field with required validator
-      email: ['', [Validators.required, Validators.email]], // Email field with required and email validators
+      email: ['', [Validators.required, Validators.email]],
+      gender:['', [Validators.required]], // Email field with required and email validators
       password: ['', [Validators.required, Validators.minLength(6)]], // Password field with required and minlength validators
+      repeatPassword: ['', [Validators.required, Validators.minLength(6)]], // Password field with required and minlength validators
       role: ['', Validators.required] // Role field with required validator
     });
   }
@@ -56,12 +58,13 @@ export class SignupComponent implements OnInit {
   onSubmitSignup() {
     // Create a new user object from the form values
     const newUser: CreateUser = {
-      firstname: this.registerForm.value.firstname,
-      lastname: this.registerForm.value.lastname,
+      firstName: this.registerForm.value.firstname,
+      lastName: this.registerForm.value.lastname,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
+      confirmpassword: this.registerForm.value.repeatPassword,
       gender:this.registerForm.value.gender,
-      role: this.registerForm.value.role
+      // role: this.registerForm.value.role
     };
     this.isLoading = true; // Set loading state to true
     // Call the register method from AuthService

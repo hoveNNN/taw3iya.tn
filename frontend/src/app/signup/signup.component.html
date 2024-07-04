@@ -103,12 +103,32 @@
                         </div>
                       </div>
                       <div class="col-12">
+                        <div class="form-floating mb-3">
+                          <input
+                            type="Password"
+                            class="form-control"
+                            name="repeatPassword"
+                            id="repeatPassword"
+                            value=""
+                            placeholder="repeatPassword"
+                            required
+                            formControlName="repeatPassword"
+                          />
+                          <label for="repeatPassword" class="form-label">repeatPassword</label>
+                          <div class="text-danger"
+                          *ngIf="registerForm.get('repeatPassword')?.touched && registerForm.get('repeatPassword')?.invalid">
+                            <small *ngIf="registerForm.get('repeatPassword')?.hasError('required')">repeatPassword is required</small>
+                            <small *ngIf="registerForm.get('repeatPassword')?.hasError('minlength')">repeatPassword must be at least 6 characters long</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender"/>
+                          <input class="form-check-input" type="radio" name="gender" id="male" value="MALE" formControlName="gender"/>
                           <label class="form-check-label" for="male">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender"/>
+                          <input class="form-check-input" type="radio" name="gender" id="female" value="FEMALE" formControlName="gender"/>
                           <label class="form-check-label" for="female">Female</label>
                         </div>
                       </div>

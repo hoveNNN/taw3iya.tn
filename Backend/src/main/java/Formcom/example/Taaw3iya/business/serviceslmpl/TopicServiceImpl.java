@@ -5,21 +5,27 @@ import Formcom.example.Taaw3iya.dao.entities.Topic;
 import Formcom.example.Taaw3iya.dao.repository.TopicRepository;
 import jakarta.transaction.Transactional;
 import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
 @Transactional
 public class TopicServiceImpl implements ITopicService {
 
+@Autowired
 private TopicRepository topicRepository;
+
+
     public Optional<Topic> getTopic(Long id){
         return topicRepository.findById(id);
     }
 
-    public Topic addTopic(Topic p){
-        return topicRepository.save(p);
+    public Topic addTopic(String name){
+        return topicRepository.save(Topic.builder().title(name).build());
     }
 
     public Topic updateTopic(Topic p){
@@ -34,20 +40,15 @@ private TopicRepository topicRepository;
         return topicRepository.findAll();
     }
 
-//
-//    public void init() {
-//
-//
-//            Long idtopic = 0L;
-//            Topic topicSport = new Topic(idtopic++, "topicSport", null);
-//            Topic topicSonter = new Topic(idtopic++, "topicSonter", null);
-//            Topic topicPolitique = new Topic(idtopic++, "topicPolitique", null);
-//            Topic topicIndustrie = new Topic(idtopic++, "topicIndustrie", null);
-//
-//            this.addTopic(topicSport);
-//            this.addTopic(topicSonter);
-//            this.addTopic(topicPolitique);
-//            this.addTopic(topicIndustrie);
-//
-//    }
+
+    @Override
+    public List<Topic> addTopics(List<String> topicNames) {
+        List<Topic> topics = new ArrayList<>();
+        for (String topicName : topicNames) {
+            Topic topic = Topic.builder().title(topicName).build();
+            topics.add(topic);
+        }
+        return topicRepository.saveAll(topics);
+    }
+
 }

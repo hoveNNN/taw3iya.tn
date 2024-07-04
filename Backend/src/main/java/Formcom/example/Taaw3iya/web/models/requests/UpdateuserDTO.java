@@ -1,4 +1,4 @@
-package Formcom.example.Taaw3iya.web.dto;
+package Formcom.example.Taaw3iya.web.models.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CommentForm {
-    private  String value;
-    private  Long post_id;
+public class UpdateuserDTO {
+    private String firstname;
+    private String lastname;
+    private String email;
 }

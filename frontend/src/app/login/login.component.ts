@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { LoginDto } from '../shared/create-user';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   AuthUserSub!: Subscription; // Subscription to the authenticated user observable
 
   // Inject AuthService and Router in the constructor
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,private storageService:StorageService) { }
 
   // Lifecycle hook that is called after Angular has initialized all data-bound properties
   ngOnInit() {
@@ -37,12 +39,15 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const email = formLogin.value.email; // Get email from the form
-    const password = formLogin.value.password; // Get password from the form
+    const dto: LoginDto = {
+      email: formLogin.value.email,
+      password: formLogin.value.password
+    };
 
     // Call the login method from AuthService
-    this.authService.login(email, password).subscribe({
+    this.authService.login(dto).subscribe({
       next: userData => {
+        StorageService.saveToken(userData.token);
         // On successful login, navigate to the home page
         this.router.navigate(['/']);
       },
