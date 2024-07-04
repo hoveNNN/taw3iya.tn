@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   private users: User[] = user; 
+  httpOptions={
+    headers:new HttpHeaders({'Content-Type':'application/json'}),
+    withCredentials: true
+  };
 
   constructor(private httpClient: HttpClient, @Inject ('BaseURL')private baseURL:any) { }
 
@@ -29,17 +33,18 @@ export class UserService {
   deleteUserById(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.baseURL+"products/"+id);
     }
-addUser(user:User):Observable<User>{
-  const httpOptions={
-    headers:new HttpHeaders({'content-type':'application/json'})
-  }
-  return this.httpClient.post<User>(this.baseURL+'products',user,httpOptions)
-}
+// addUser(user:User):Observable<User>{
+//   const httpOptions={
+//     headers:new HttpHeaders({'content-type':'application/json'})
+//   }
+//   return this.httpClient.post<User>(this.baseURL+'products',user,httpOptions)
+// }
 
 updateUser(user: User): Observable<User> {
-  const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  return this.httpClient.put<User>(this.baseURL + 'products/' + user.id, user, httpOptions);
+return this.httpClient.put<User>(this.baseURL+'products/'+user.id,user,this.httpOptions)
 }
 }
+  // const httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
+  // return this.httpClient.put<User>(this.baseURL + 'products/' + user.id, user, httpOptions);
