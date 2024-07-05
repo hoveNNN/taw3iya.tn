@@ -2,6 +2,7 @@ package Formcom.example.Taaw3iya.business.serviceslmpl;
 
 import Formcom.example.Taaw3iya.business.services.ICommentService;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
+import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.repository.CommentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,15 @@ public class CommentServicelmpl implements ICommentService {
         return comments;
 
     }
+    @Override
+    public void DeleteAllCommentofpost(Long id){
+        Optional<Comment> likestcommentlike= commentRepository.findByposte(id);
+
+        if (likestcommentlike.isPresent())
+
+            likestcommentlike.ifPresent(this.commentRepository::delete);
+    }
+
+
+
 }

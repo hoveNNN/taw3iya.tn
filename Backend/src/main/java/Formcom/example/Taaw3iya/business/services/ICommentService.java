@@ -18,4 +18,6 @@ public interface ICommentService {
     public List<Comment> getAllComments();
 
   public Optional<Comment> gettAllCommentforPost(long idpost);
+
+    public void DeleteAllCommentofpost(Long id);
 }

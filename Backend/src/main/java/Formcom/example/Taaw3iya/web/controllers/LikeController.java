@@ -5,7 +5,10 @@ import Formcom.example.Taaw3iya.business.services.ILikeService;
 import Formcom.example.Taaw3iya.business.services.IPostService;
 import Formcom.example.Taaw3iya.dao.entities.Like;
 import Formcom.example.Taaw3iya.dao.entities.Post;
+import Formcom.example.Taaw3iya.dao.entities.User;
+import Formcom.example.Taaw3iya.dao.enums.IntercationType;
 import Formcom.example.Taaw3iya.exceptions.DuplicatePostExecption;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-import static Formcom.example.Taaw3iya.dao.enums.IntercationType.LIKE;
+import static Formcom.example.Taaw3iya.dao.enums.IntercationType.*;
 
 @RequestMapping("/api/like")
 @RestController
@@ -48,6 +51,7 @@ public class LikeController {
            if (idLike!=0){
                likeService.deleteLike(idLike);
 
+
                return new ResponseEntity<>("Like deleted succsusfuly",HttpStatus.OK);
            }else{
                return new ResponseEntity<>("Like not succsusfuly",HttpStatus.NOT_FOUND);
@@ -61,28 +65,35 @@ public class LikeController {
     }
 
     @RequestMapping("/createlike/{idpost}")
-    public ResponseEntity<Object> createlikeforPost(@PathVariable("idpost")Long id) throws DuplicatePostExecption {
+    public ResponseEntity<Object> createlikeforPost(@PathVariable("idpost")Long idpost,@RequestParam("value") IntercationType value) throws DuplicatePostExecption {
 
 //        Like l1=new Like(idCountLikes++,"Like",authservice.getUserauth(getuseremail()));
 //        likeService.addLike(l1);
 //        System.out.println("big problem");
 //        return new ResponseEntity<>("like ajouted",HttpStatus.OK);
         Long iduser= Long.valueOf(authservice.getidOfUserAuth(getuseremail()));
+User user=authservice.getUserauth(getuseremail());
 
-
-        Boolean test=likeService.userAlreadylikethepost(iduser,id);
-        Optional<Post> post=postService.getPost(id);
+        Boolean test=likeService.userAlreadylikethepost(iduser,idpost);
+        Optional<Post> post=postService.getPost(idpost);
         if (post.isPresent()) {
           if (test){
               return new ResponseEntity<>("user already like this post",HttpStatus.BAD_REQUEST);
           }else {
-              Like l1=new Like(idCountLikes++,LIKE,authservice.getUserauth(getuseremail()),id);
-              likeService.addLike(l1);
+
+              Like like1=new Like();
+//              Like l1=new Like(LIKE,authservice.getUserauth(getuseremail()),id);
+              like1.setValue(value);
+              like1.setPoste(idpost);
+              like1.setUser(user);
+              Hibernate.initialize(like1);
+              likeService.addLike(like1);
+
 
               List<Like> Likes=post.get().getLikes();
-              Likes.add(l1);
+              Likes.add(like1);
               post.get().setLikes(Likes);
-              postService.updatePost(post.get(),id);
+              postService.updatePost(post.get(),idpost);
 
               return new ResponseEntity<>("Like ajouteed to the post",HttpStatus.OK);
           }

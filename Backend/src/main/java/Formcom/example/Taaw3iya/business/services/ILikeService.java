@@ -20,4 +20,6 @@ public interface ILikeService {
     public Boolean userAlreadylikethepost(Long iduser, Long idpost);
 
     public Long getIdOfLikeByuUserandPost(Long iduser ,Long idpost);
+
+    public void DeleteAllLikeofpost(Long id);
 }

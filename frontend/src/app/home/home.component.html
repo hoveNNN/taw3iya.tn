@@ -1,2 +1,75 @@
 <app-navbar></app-navbar>
-<h1> Welcome to our forum</h1>
+<div class="container">
+  <div class="row">
+    <!-- Main content -->
+    <div class="col-lg-9 mb-3">
+      <div class="row text-left mb-5">
+        <div class="col-lg-6 mb-3 mb-sm-0">
+          <select
+            class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
+            [(ngModel)]="selectedCategory"
+            (ngModelChange)="filterPosts()"
+          >
+            <option value="">Topics</option>
+            <option value="Sport">Sport</option>
+            <option value="HealthCare">HealthCare</option>
+            <option value="Politics">Politics</option>
+            <option value="Build">Technology</option>
+          </select>
+        </div>
+        <div class="col-lg-6 text-lg-right">
+          <select
+            class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50"
+            [(ngModel)]="selectedFilter"
+            (ngModelChange)="filterPosts()"
+          >
+            <option value="">Filter by</option>
+            <option value="Votes">Votes</option>
+            <option value="Replies">Replies</option>
+            <option value="Views">Views</option>
+          </select>
+        </div>
+      </div>
+      <!-- Posts -->
+      <div *ngFor="let post of filteredPosts" class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
+        <div class="row align-items-center">
+          <div class="col-md-8 mb-3 mb-sm-0">
+            <h5>
+              <a href="#" class="text-primary">{{ post.title }}</a>
+            </h5>
+            <p class="text-sm">
+              <span class="op-6">Posted</span>
+              <a class="text-black" href="#">{{ post.time }}</a>
+              <span class="op-6">ago by</span>
+              <a class="text-black" href="#">{{ post.author }}</a>
+            </p>
+            <div class="text-sm op-5">
+              <a class="text-black mr-2" href="#" *ngFor="let tag of post.tags">#{{ tag }}</a>
+            </div>
+          </div>
+          <div class="col-md-4 op-7">
+            <div class="row text-center op-7">
+              <div class="col px-1">
+                <i class="ion-connection-bars icon-1x"></i>
+                <span class="d-block text-sm">{{ post.votes }} Votes</span>
+              </div>
+              <div class="col px-1">
+                <i class="ion-ios-chatboxes-outline icon-1x"></i>
+                <span class="d-block text-sm">{{ post.replies }} Replies</span>
+              </div>
+              <div class="col px-1">
+                <i class="ion-ios-eye-outline icon-1x"></i>
+                <span class="d-block text-sm">{{ post.views }} Views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of posts -->
+    </div>
+    <!-- Sidebar content -->
+    <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
+      <!-- Sidebar content here -->
+    </div>
+  </div>
+</div>

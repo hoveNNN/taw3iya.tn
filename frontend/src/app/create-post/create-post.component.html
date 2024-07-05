@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="center-card">
+    <form [formGroup]="postForm">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text">
+      </div>
+  
+      <div class="form-field">
+        <label for="img">Image URL</label>
+        <input id="img" formControlName="img" type="text">
+      </div>
+  
+      <div class="form-field">
+        <label for="content">Content</label>
+        <textarea id="content" rows="5" formControlName="content"></textarea>
+      </div>
+  
+      <div class="form-field">
+        <label for="postedBy">Posted By</label>
+        <input id="postedBy" formControlName="postedBy" type="text">
+      </div>
+  
+      <div class="form-field">
+        <label for="tags">Tags</label>
+        <div class="chip-container">
+          <span *ngFor="let tag of tags" class="chip">
+            {{ tag }}
+            <button type="button" (click)="remove(tag)">×</button>
+          </span>
+          <input id="tags" placeholder="New Tag..." (keyup.enter)="add($event)">
+        </div>
+      </div>
+  
+      <button 
+        class="submit-btn" 
+        type="submit" 
+        [disabled]="!postForm.valid" (click)="createPost()"
+      >
+        Create New Post
+      </button>
+    </form>
+  </div>

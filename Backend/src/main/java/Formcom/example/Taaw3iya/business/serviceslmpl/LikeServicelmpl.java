@@ -69,5 +69,36 @@ public class LikeServicelmpl implements ILikeService {
 
     }
 
-}
+    @Override
+    public void DeleteAllLikeofpost(Long idpost){
+
+        Optional<Like> likestodelete= likerepository.findByposte(idpost);
+
+        if (likestodelete.isPresent())
+
+           likestodelete.ifPresent(this.likerepository::delete);
+        }
+
+
+
+    }
+
+
+//@Override
+//public Optional<Like> getalllikeofpost(Long idpost){
+//
+//    Optional<Like> likestodelete= LikeRepository.findByposte(idpost);
+//
+//    if (likestodelete.isPresent())
+//
+//        likestodelete.ifPresent(this.likerepository::delete);
+//}
+
+
+
+//    }
+
+
+
+
 

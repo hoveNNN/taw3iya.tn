@@ -105,15 +105,30 @@ public class PostController {
 
     @PreAuthorize("hasAnyRole('ADMIN')")
      @RequestMapping({"/{idtopic}/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod(@PathVariable("idtopic")Long idtopic,@RequestParam("value") String value) throws DuplicatePostExecption {
+     public ResponseEntity<Object> ajouterprod(@PathVariable("idtopic")Long idtopic,@RequestParam("value") String value,@RequestParam("file") MultipartFile file) throws DuplicatePostExecption {
         List<Like> likes1=new ArrayList<Like>();
 //        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
 
-         Post P1=new Post(idCount++,value,likes1,comments1,authservice.getUserauth(this.getuseremail()),idtopic);
+         Post P1=new Post();
+         P1.setType(value);
+         P1.setTopic(idtopic);
+         P1.setComments(comments1);
+         P1.setLikes(likes1);
 
-
+        String message="";
         postService.addPost(P1);
+    try{
+        String fileName = StorageService.save(file);
+        this.postService.putImage(P1.getId(),fileName);
+        message = "File uploaded Successfully"+file.getOriginalFilename();
+    }catch(Exception e){
+        message = "could Not upload the file"+file.getOriginalFilename()+".error:"+e.getMessage();
+    }
+
+
+
+
 
 
         return new ResponseEntity<>("Post ajouted ",HttpStatus.OK);
@@ -157,11 +172,17 @@ public class PostController {
             return new ResponseEntity<>("failed:post  not found",HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping(value="/post/{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable("id")Long id) {
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable("id")Long id) {
         Optional<Post> post=postService.getPost(id);
         if(post.isPresent()){
+            likeService.DeleteAllLikeofpost(id);
+            commentService.DeleteAllCommentofpost(id);
+            post.get().setComments(null);
+            post.get().setLikes(null);
             postService.deletePost(id);
+
+            System.out.println("yyyyyy");
 
             return new ResponseEntity<>("post deleted successfully",HttpStatus.OK);
         }else{

@@ -24,6 +24,7 @@ import static Formcom.example.Taaw3iya.dao.enums.Role.ADMIN;
 
 @Service
 public class AuthenticationService {
+    public static Long idcountDEntity=0L;
     private final UserRepository userRepository;
     
     private final PasswordEncoder passwordEncoder;
@@ -49,6 +50,7 @@ public class AuthenticationService {
         User user = new User();
 
                 if (Objects.equals(input.getPassword(), input.getConfirmpassword())){
+//                    user.setId(idcountDEntity);
                     user.setLastName(input.getLastName());
                     user.setFirstName(input.getFirstName());
                     user.setEmail(input.getEmail());
@@ -56,6 +58,7 @@ public class AuthenticationService {
                     user.setPassword(passwordEncoder.encode(input.getPassword()));
 
                     user.setRole(ADMIN);
+
                 }else{
                     throw new Exception("Password not the same");
                 }
@@ -133,6 +136,8 @@ public class AuthenticationService {
 
 
     }
+
+
 
 
 

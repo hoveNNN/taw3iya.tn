@@ -1,33 +1,83 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <img src="/assets/images/tlogo.jpg" alt="taw3ya-logo" class="tlogo">
+    <img src="/assets/images/tlogo.jpg" alt="taw3ya-logo" class="tlogo" />
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a
+            class="nav-link active d-flex flex-column text-center"
+            aria-current="page"
+            routerLink=""
+          >
+            <i class="fas fa-home fa-lg"></i>
+            <span class="small">Home</span>
+          </a>
         </li>
+    
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact">Contact</a>
-        </li>
-        <li >
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Topics</button>
-            <div class="dropdown-content">
-              <a >Link 1</a>
-              <a >Link 2</a>
-              <a >Link 3</a>
-            </div>
-          </div>
+          <a class="nav-link d-flex flex-column text-center" routerLink="/faq">
+            <i class="fas fa-question-circle fa-lg"></i>
+            <span class="small" routerLink="/faq">Help</span>
+          </a>
         </li>
       </ul>
-
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" routerLink="/login">Login</button>
-      </form>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link d-flex flex-column text-center"
+              aria-current="page"
+              href="#"
+              ><i class="fas fa-bell fa-lg"></i
+              ><span class="small">Notifications</span></a
+            >
+          </li> -->
+          <li class="nav-item dropdown" *ngf="isAuth" outerLinkActivate="active">
+            <a
+              class="nav-link dropdown-toggle d-flex align-items-center"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="assets/images/tlogo.jpg"
+                class="rounded-circle"
+                height="30"
+                alt=""
+                loading="lazy"
+              />
+            </a>
+            <ul class="dropdown-content" style="z-index: 50">
+              <li>
+                <a class="dropdown-item" 
+                  >My profile</a
+                >
+              </li>
+              <li><a class="dropdown-item" routerLink="/user">DashBoard</a></li>
+              <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
+              <li><a class="dropdown-item">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button
+          class="btn btn-outline-success mx-3"
+          type="submit"
+          (click)="openLogIn()"
+        >
+          Login
+        </button>
+        <button
+          class="btn btn-outline-success"
+          type="submit"
+          routerLink="/signup"
+        >
+          Sign up
+        </button>
+      </div>
     </div>
   </div>
 </nav>
-
-

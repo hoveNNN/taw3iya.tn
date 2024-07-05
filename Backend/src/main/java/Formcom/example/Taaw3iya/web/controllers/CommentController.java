@@ -56,15 +56,20 @@ public class CommentController {
         Post p1=postService.getPost(idpost).get();
         Long iduser= Long.valueOf(authservice.getidOfUserAuth(getuseremail()));
 
-        Comment l1=new Comment(idCountcomment++,coment.getValue(),authservice.getUserauth(getuseremail()),idpost);
-        commentService.addComment(l1);
+
+
+        Comment   L2=new Comment();
+        L2.setUser(authservice.getUserauth(getuseremail()));
+        L2.setValue(coment.getValue());
+        L2.setPoste(idpost);
+        commentService.addComment(L2);
 //
 //
         return new ResponseEntity<>("Comment add successfully", HttpStatus.OK);
 
     }
     @DeleteMapping(value="/comment/{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable("id")Long id) {
+    public ResponseEntity<Object> deleteComment(@PathVariable("id")Long id) {
         Optional<Comment> comment=commentService.getComment(id);
         if(comment.isPresent()){
             commentService.deleteComment(id);

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import static Formcom.example.Taaw3iya.business.services.AuthenticationService.idcountDEntity;
 import static Formcom.example.Taaw3iya.dao.enums.Role.USER;
 import static Formcom.example.Taaw3iya.dao.enums.Role.ADMIN;
 import java.util.Optional;
@@ -56,13 +58,14 @@ public class UserController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @GetMapping(value="/AdminAddUser")
+    @PostMapping(value="/AdminAddUser")
     public ResponseEntity<?> AdminaddUser(@RequestBody AdminAddUserDTO data) {
 
 
         Boolean test=userService.AdminAddUser2(data);
         if(test){
             return new ResponseEntity<>("User added successfully",HttpStatus.OK);
+
         }
         else return new ResponseEntity<>("failed: User not found",HttpStatus.NOT_FOUND);
     }
