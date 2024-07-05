@@ -65,10 +65,13 @@ public class SecurityConfiguration {
             "api/topic",
             "api/topic/{id}",
             "api/topic/getopic/{id}",
+            "api/topic/getalltopic",
             "api/user/{id}",
-            "api/user/delete/{id}",
-            "api/post/{idtopic}/{ajouterPost}",
-            "api/post/{id}"
+
+            "api/post/ajouterPost",
+            "api/post/{id}",
+            "api/post/getPostBytopic/{idtopic}"
+
 
 
 
@@ -121,6 +124,7 @@ public class SecurityConfiguration {
                                 .requestMatchers("api/user/AdminAddUser}").hasRole(ADMIN.name())
                                 .requestMatchers("api/user/{id}").hasRole(ADMIN.name())
                                 .requestMatchers("api/user/delete/{id}").hasRole(ADMIN.name())
+
                                 .anyRequest()
                                 .authenticated()
                 )

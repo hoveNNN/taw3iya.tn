@@ -24,8 +24,8 @@ private TopicRepository topicRepository;
         return topicRepository.findById(id);
     }
 
-    public Topic addTopic(String name){
-        return topicRepository.save(Topic.builder().title(name).build());
+    public Topic addTopic(Topic top){
+        return topicRepository.save(top);
     }
 
     public Topic updateTopic(Topic p){

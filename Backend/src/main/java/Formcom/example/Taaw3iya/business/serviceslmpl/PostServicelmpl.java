@@ -91,4 +91,9 @@ public class PostServicelmpl implements IPostService {
 
 
   }
+    public List <Post>getPostBytopic (Long idtopic){
+
+        return postRepository.findPostsByTopic(idtopic);
+
+    }
 }

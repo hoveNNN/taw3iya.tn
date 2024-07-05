@@ -5,57 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ICommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ICommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ILikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ILikeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/CommentServicelmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/CommentServicelmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/LikeServicelmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/LikeServicelmpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ITopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/ITopicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/PostServicelmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/TopicServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Like.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Like.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/LikeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/entities/Organization.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/AdminAddUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/AdminAddUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/contact/contact.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/contact/contact.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/contact/contact.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/contact/contact.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/navbar/navbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/signup/signup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/sujet/sujet.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/sujet/sujet.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/sujet/sujet.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/sujet/sujet.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/TopicController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +136,9 @@
       <workItem from="1720145649323" duration="4303000" />
       <workItem from="1720150332095" duration="2561000" />
       <workItem from="1720153629496" duration="4272000" />
+      <workItem from="1720161573896" duration="287000" />
+      <workItem from="1720164327820" duration="2455000" />
+      <workItem from="1720167800354" duration="1269000" />
     </task>
     <servers />
   </component>

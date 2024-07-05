@@ -1,5 +1,6 @@
 package Formcom.example.Taaw3iya.web.controllers;
 
+import Formcom.example.Taaw3iya.business.serviceslmpl.PostServicelmpl;
 import Formcom.example.Taaw3iya.business.serviceslmpl.TopicServiceImpl;
 import Formcom.example.Taaw3iya.dao.entities.Comment;
 import Formcom.example.Taaw3iya.dao.entities.Topic;
@@ -27,33 +28,40 @@ public class TopicController {
 
     @Autowired
   private final  TopicServiceImpl topicService;
+    @Autowired
+    private final PostServicelmpl postService;
+
   static Long idtopic=0L;
-  public TopicController(TopicServiceImpl topicService) {
+  public TopicController(TopicServiceImpl topicService ,PostServicelmpl postService) {
       this.topicService = topicService;
-    
+    this.postService = postService;
 
   }
 
-    @PostMapping
+    @PostMapping(value = "AjouterTopic")
     public ResponseEntity<Topic> addTopic(@RequestBody String topicName) {
-      return new ResponseEntity<>(topicService.addTopic(topicName), HttpStatus.CREATED);
+
+     Topic t1=new Topic();
+     t1.setTitle(topicName);
+     t1.setPosts(null);
+     topicService.addTopic(t1);
+     return new ResponseEntity<>(t1, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping(value = "getalltopic")
     public ResponseEntity<List<Topic>> getTopics() {
+      topicService.getAllTopics();
       return new ResponseEntity<>(topicService.getAllTopics(), HttpStatus.OK);
     }
 
-    @GetMapping(value="getopic/{id}")
-    public ResponseEntity<Topic> getTopicbyid(@PathVariable("id")Long id)  {
-        return new ResponseEntity<Topic>(topicService.getTopic(id).get(), HttpStatus.OK);
-    }
+
 
   @DeleteMapping(value="/{id}")
     public ResponseEntity<Object> deletetopic(@PathVariable("id")Long id) {
         Optional<Topic> topic=topicService.getTopic(id);
 
         if(topic.isPresent()){
+
           topicService.deleteTopic(id);
 
             return new ResponseEntity<>("topic deleted successfully",HttpStatus.OK);

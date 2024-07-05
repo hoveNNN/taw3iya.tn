@@ -104,17 +104,18 @@ public class PostController {
 
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-     @RequestMapping({"/{idtopic}/ajouterPost"})
-     public ResponseEntity<Object> ajouterprod(@PathVariable("idtopic")Long idtopic,@RequestParam("value") String value,@RequestParam("file") MultipartFile file) throws DuplicatePostExecption {
+     @RequestMapping({"/ajouterPost"})
+     public ResponseEntity<Object> ajouterprod(@RequestParam("idtopic")Long idtopic,@RequestParam("value") String value,@RequestParam("file") MultipartFile file) throws DuplicatePostExecption {
         List<Like> likes1=new ArrayList<Like>();
 //        HashSet<Like> likes1=new HashSet<Like>();
          List<Comment> comments1=new ArrayList<Comment>();
-
+User user= authservice.getUserauth(getuseremail());
          Post P1=new Post();
          P1.setType(value);
          P1.setTopic(idtopic);
          P1.setComments(comments1);
          P1.setLikes(likes1);
+         P1.setUser_id(user);
 
         String message="";
         postService.addPost(P1);
@@ -135,15 +136,7 @@ public class PostController {
 
 
     }
-        @PreAuthorize("hasAnyRole('ROLE_USER')")
-        @GetMapping({"/testRole"})
-        public ResponseEntity<Object> ajouterprod2()   {
 
-
-
-                return new ResponseEntity<>("USer Is here add successfully",HttpStatus.OK);
-
-            }
 
             @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
             @RequestMapping({"/testAdmin"})
@@ -210,6 +203,18 @@ public class PostController {
         }
         return currentUserName;
     }
+    @GetMapping(value="/getPostBytopic/{idtopic}")
+    public ResponseEntity<Object> getPostbytopic(@PathVariable("idtopic")Long idtopic) {
+        List<Post> post=postService.getPostBytopic(idtopic);
+        if(post!=null){
+
+
+            return new ResponseEntity<>(post,HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("failed:post  not found",HttpStatus.NOT_FOUND);
+        }
+    }
+
     }
 
 //

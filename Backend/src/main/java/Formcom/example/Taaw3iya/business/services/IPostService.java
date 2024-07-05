@@ -19,4 +19,7 @@ public interface IPostService {
     public List<Post> getAllPost();
 
     public Post putImage(Long id ,String filename) ;
+
+    //
+    public List <Post>getPostBytopic (Long idtopic);
 }

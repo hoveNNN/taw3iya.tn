@@ -9,7 +9,7 @@ public interface ITopicService {
 
     public Optional<Topic> getTopic(Long id);
 
-    public Topic addTopic(String name);
+    public Topic addTopic(Topic name);
 
     public Topic updateTopic(Topic p);
 
