@@ -115,7 +115,10 @@ public class SecurityConfiguration {
                                 .requestMatchers( "/api/post/testRole").hasRole(USER.name())
                                 .requestMatchers( "/api/post/ajouterPost").hasRole(ADMIN.name())
                                 .requestMatchers("api/user/allUsers").hasRole(ADMIN.name())
-
+                                .requestMatchers("api/user/changeRole/{id}").hasRole(ADMIN.name())
+                                .requestMatchers("api/user/AdminAddUser}").hasRole(ADMIN.name())
+                                .requestMatchers("api/user/{id}").hasRole(ADMIN.name())
+                                .requestMatchers("api/user/delete/{id}").hasRole(ADMIN.name())
                                 .anyRequest()
                                 .authenticated()
                 )

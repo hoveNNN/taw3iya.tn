@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0dfe54e-eb27-428e-9949-c1531f3f3724" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/dto/AdminAddUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9e310c38-b9a0-4a24-9caa-03f9f4f2fd7e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/services/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/business/serviceslmpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/configs/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/dao/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/TopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/Formcom/example/Taaw3iya/web/controllers/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +125,10 @@
       <workItem from="1720089091852" duration="315000" />
       <workItem from="1720090697609" duration="1166000" />
       <workItem from="1720101730815" duration="4915000" />
+      <workItem from="1720115788347" duration="256000" />
+      <workItem from="1720128048395" duration="175000" />
+      <workItem from="1720128303138" duration="64000" />
+      <workItem from="1720133118066" duration="4236000" />
     </task>
     <servers />
   </component>

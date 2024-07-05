@@ -20,6 +20,8 @@ import java.util.Optional;
 
 import static Formcom.example.Taaw3iya.dao.enums.Role.USER;
 
+import static Formcom.example.Taaw3iya.dao.enums.Role.ADMIN;
+
 @Service
 public class AuthenticationService {
     private final UserRepository userRepository;
@@ -53,7 +55,7 @@ public class AuthenticationService {
                     user.setGender(input.getGender());
                     user.setPassword(passwordEncoder.encode(input.getPassword()));
 
-                    user.setRole(USER);
+                    user.setRole(ADMIN);
                 }else{
                     throw new Exception("Password not the same");
                 }
